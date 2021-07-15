@@ -1,0 +1,79 @@
+﻿#SlideTable td {
+    font-size: 13px;
+}
+
+#SlideTable .k-grid-header table {
+    min-width: 1100px;
+}
+
+#SlideTable .k-grid-header table, .k-grid-content table, .k-grid-footer table, .k-grid-content-locked > table {
+    table-layout: fixed;
+    min-width: 1100px;
+}
+
+#SlideTable .k-header {
+    -webkit-box-sizing: content-box;
+    box-sizing: inherit !important;
+}
+
+#SlideTable .k-grid-content tbody tr td .k-grid-checkvalidate {
+    position: relative;
+    height: 50px;
+    background-color: gray;
+    border-color: gray;
+}
+
+    #SlideTable .k-grid-content tbody tr td .k-grid-checkvalidate > span {
+        position: absolute;
+        left: 7px;
+        top: 7px;
+        color: white;
+    }
+
+#KenWindownSlide .validationMessageTemplate {
+    display: none;
+}
+
+.fa-exclamation-triangle:hover .validationMessageTemplate {
+    display: inline;
+}
+
+.k-state-default.k-picker-wrap > .k-select {
+    margin-bottom: 0px;
+    min-height: initial;
+    height: auto;
+}
+
+/*div.k-window-content {
+    overflow: visible;
+    float: left;
+    display: none;
+}*/
+
+.popupSlide {
+    left: 7.5% !important;
+}
+
+    .popupSlide label {
+        padding-top: 6px;
+    }
+
+div.customDivision {
+    display: flex;
+}
+
+div.smallDivision {
+    width: 12.3337%;
+    margin-left: 15px;
+}
+
+div.largeDivision {
+    width: 87.6663%;
+    padding-right: 18px;
+    padding-left: 3px;
+}
+
+.ScrollStyle {
+    max-height: 200px;
+    overflow-y: auto;
+}

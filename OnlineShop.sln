@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Data", "OnlineShop.Data\OnlineShop.Data.csproj", "{B77FFA04-868D-42B4-8688-E8F091270ADA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Business", "OnlineShop.Business\OnlineShop.Business.csproj", "{F8BD68A0-2D4E-49DE-9D30-682AC53548E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Common", "OnlineShop.Common\OnlineShop.Common.csproj", "{3D269C6B-CDAB-4645-8DAE-A5F98307B99C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Entities", "OnlineShop.Entities\OnlineShop.Entities.csproj", "{F757275E-F8B9-4A9B-A50D-8BC579ACDA50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Admin", "OnlineShop.Admin\OnlineShop.Admin.csproj", "{967E381E-3A52-42D5-B737-93441458653A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B77FFA04-868D-42B4-8688-E8F091270ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77FFA04-868D-42B4-8688-E8F091270ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77FFA04-868D-42B4-8688-E8F091270ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77FFA04-868D-42B4-8688-E8F091270ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BD68A0-2D4E-49DE-9D30-682AC53548E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BD68A0-2D4E-49DE-9D30-682AC53548E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BD68A0-2D4E-49DE-9D30-682AC53548E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BD68A0-2D4E-49DE-9D30-682AC53548E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D269C6B-CDAB-4645-8DAE-A5F98307B99C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D269C6B-CDAB-4645-8DAE-A5F98307B99C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D269C6B-CDAB-4645-8DAE-A5F98307B99C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D269C6B-CDAB-4645-8DAE-A5F98307B99C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F757275E-F8B9-4A9B-A50D-8BC579ACDA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F757275E-F8B9-4A9B-A50D-8BC579ACDA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F757275E-F8B9-4A9B-A50D-8BC579ACDA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F757275E-F8B9-4A9B-A50D-8BC579ACDA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{967E381E-3A52-42D5-B737-93441458653A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{967E381E-3A52-42D5-B737-93441458653A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{967E381E-3A52-42D5-B737-93441458653A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{967E381E-3A52-42D5-B737-93441458653A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45
+		SolutionGuid = {C986380A-8F39-40FC-B313-E6DCE6D8CFDE}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://letiendungsolution.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = OnlineShop.Data\\OnlineShop.Data.csproj
+		SccProjectName1 = OnlineShop.Data
+		SccLocalPath1 = OnlineShop.Data
+		SccProjectUniqueName2 = OnlineShop.Business\\OnlineShop.Business.csproj
+		SccProjectName2 = OnlineShop.Business
+		SccLocalPath2 = OnlineShop.Business
+		SccProjectUniqueName3 = OnlineShop.Common\\OnlineShop.Common.csproj
+		SccProjectName3 = OnlineShop.Common
+		SccLocalPath3 = OnlineShop.Common
+		SccProjectUniqueName4 = OnlineShop.Entities\\OnlineShop.Entities.csproj
+		SccProjectName4 = OnlineShop.Entities
+		SccLocalPath4 = OnlineShop.Entities
+		SccProjectUniqueName5 = OnlineShop.Admin\\OnlineShop.Admin.csproj
+		SccProjectName5 = OnlineShop.Admin
+		SccLocalPath5 = OnlineShop.Admin
+	EndGlobalSection
+EndGlobal

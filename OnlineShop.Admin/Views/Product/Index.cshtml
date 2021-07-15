@@ -1,0 +1,341 @@
+﻿@{
+    ViewBag.Title = "Sản Phẩm";
+    ViewBag.SubMenu = "Danh Mục Sản Phẩm";
+}
+
+<link href="@Url.Content("~/Content/Product.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/productController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/productModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/productService.js")"></script>
+<script src="@Url.Content("~/ckfinder/ckfinder.js")"></script>
+
+@using (Ajax.BeginForm("Index", "Product", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "productValid", @id = "productValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="productController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="ProductTable"
+                     k-options="ProductSection"
+                     k-on-save="ProductListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownProduct" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                <ul>
+                    <li ng-show="showErrorMsg(productValid.Code)">Mã Sản Phẩm Không Được Để Trống</li>
+                    <li ng-show="showErrorMsg(productValid.Name)">Tên Sản Phẩm Không Được Để Trống</li>
+                    <li ng-show="showErrorMsg(productValid.Price)">Giá Sản Phẩm Không Được Để Trống</li>
+                    <li ng-show="CheckDuplicate">Mã Sản Phẩm Đã Tồn Tại</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Mã Sản Phẩm</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Code"
+                               id="Code"
+                               ng-model="product.Code"
+                               maxlength="500"
+                               ng-class="{'has-error': showErrorMsg(productValid.Code) || CheckDuplicate}"
+                               required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Tên Sản Phẩm</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Name"
+                               id="Name"
+                               ng-model="product.Name"
+                               maxlength="500"
+                               ng-class="{'has-error': showErrorMsg(productValid.Name) }"
+                               required />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Danh Mục</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <select kendo-multi-column-combo-box
+                                id="CategoryID"
+                                name="CategoryID"
+                                ng-model="product.CategoryID"
+                                k-data-source="CategoriesDropdownlist"
+                                k-data-text-field="'Name'"
+                                k-data-value-field="'CategoryID'"
+                                k-columns="[
+                                            { field: 'CategoryID', title: 'Mã Danh Mục', width: 200},
+                                            { field: 'Name', title: 'Tên Danh Mục', width: 200}
+                                           ]"
+                                k-filter="'contains'"
+                                k-auto-bind="false"
+                                class="CategoryID"></select>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Nhà Sản Xuất</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <select kendo-multi-column-combo-box
+                                id="ProducerID"
+                                name="ProducerID"
+                                ng-model="product.ProducerID"
+                                k-data-source="ProducerDropdownlist"
+                                k-data-text-field="'Name'"
+                                k-data-value-field="'ProducerID'"
+                                k-columns="[
+                                            { field: 'ProducerID', title: 'Mã Nhà Sản Xuất', width: 200},
+                                            { field: 'Name', title: 'Tên Nhà Sản Xuất', width: 200}
+                                           ]"
+                                k-filter="'contains'"
+                                k-auto-bind="false"
+                                class="ProducerID"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Đơn Giá</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Price"
+                               id="Price"
+                               ng-model="product.Price"
+                               ng-change="OnPriceChange()"
+                               ng-class="{'has-error': showErrorMsg(productValid.Price) }"
+                               required
+                               numbers-only />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Giảm Giá</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Discount"
+                               id="Discount"
+                               ng-model="product.Discount"
+                               ng-change="OnDiscountChange()"
+                               numbers-only />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Trạng Thái Hàng</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox"
+                               id="Available"
+                               ng-model="product.Available"
+                               name="Available"
+                               class="k-checkbox" />
+                        <label class="k-checkbox-label" for="Available">Có Sẵn</label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Thời Gian Hot</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input kendo-date-picker
+                               id="Special"
+                               name="Special"
+                               class="Special"
+                               k-ng-model="product.Special"
+                               @*k-options="DateDayFirstSelectorOptions"*@
+                               k-format="'dd/MM/yyyy'"
+                               style="min-height:35px" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Mô Tả</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Description"
+                               id="Description"
+                               ng-model="product.Description" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Bảo Hành</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <select kendo-drop-down-list
+                                id="Warranty"
+                                name="Warranty"
+                                ng-model="product.Warranty"
+                                k-data-source="WarrantyDropdownlist"
+                                k-data-text-field="'Name'"
+                                k-data-value-field="'Id'"
+                                class="Warranty"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Hình Ảnh</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-default" ng-click="ChoonseImage()">Chọn Ảnh</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <input class="form-control"
+                               ng-show="false"
+                               name="Image"
+                               id="ImageLabel"
+                               ng-model="product.Image" />
+                        <div name="Image"
+                             style="width: 100%; height: 150px; margin-top: -34px; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('{{product.Image}}');"
+                             id="ImagePic"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Số Lượng</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control"
+                               name="Quantity"
+                               id="Quantity"
+                               ng-model="product.Quantity"
+                               numbers-only
+                               ng-change="OnQuantityChange()" />
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Trạng Thái</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="checkbox"
+                               id="TrangThai"
+                               ng-model="product.Status"
+                               name="TrangThai"
+                               class="k-checkbox" />
+                        <label class="k-checkbox-label" for="TrangThai">Kích Hoạt</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="customDivision">
+                    <div class="smallDivision">
+                        <label>Nội Dung</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="largeDivision">
+                        <textarea class="form-control"
+                                  name="Detail"
+                                  id="Detail"
+                                  ng-model="product.Detail"
+                                  kendo-editor
+                                  k-options="CustomDetailEditorOptions"
+                                  ng-bind-html="product.Detail"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="product.ProductID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="product.CreatedByName"></label>
+                        <input type="hidden" id="CreatedByName" name="CreatedByName" ng-model="product.CreatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="product.CreatedDate"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="product.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="product.ProductID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="product.LastUpdatedByName"></label>
+                        <input type="hidden" id="LastUpdatedByName" name="LastUpdatedByName" ng-model="product.LastUpdatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="product.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="product.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnSave"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnSave"
+                            ng-disabled="DisabledBtnSave"
+                            ng-click="save(productValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> LƯU
+                    </button>
+
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnUpdate"
+                            ng-disabled="DisabledBtnUpdate"
+                            ng-click="update(productValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> CẬP NHẬT
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger k-grid-delete float-right btn-swidth mr-10"
+                            ng-click="close()">
+                        <i class="fa fa-times" aria-hidden="true"></i> ĐÓNG
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

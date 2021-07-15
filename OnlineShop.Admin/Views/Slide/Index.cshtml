@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "Trình chiếu";
+    ViewBag.SubMenu = "Danh Mục Thông Tin";
+}
+
+<link href="@Url.Content("~/Content/Slide.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/slideController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/slideModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/slideService.js")"></script>
+<script src="@Url.Content("~/ckfinder/ckfinder.js")"></script>
+
+@using (Ajax.BeginForm("Index", "Slide", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "slideValid", @id = "slideValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="slideController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="SlideTable"
+                     k-options="SlideSection"
+                     k-on-save="SlideListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownSlide" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                <ul>
+                    <li ng-show="showErrorMsg(slideValid.DisplayOrder)">Thứ Tự Hiển Thị Không Được Để Trống</li>
+                    <li ng-show="CheckDuplicate">Thứ Tự Hiển Thị Đã Tồn Tại</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Thứ Tự Hiển Thị</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="DisplayOrder"
+                               id="DisplayOrder"
+                               ng-model="slide.DisplayOrder"
+                               maxlength="500"
+                               style="margin-bottom: 15px;"
+                               ng-class="{'has-error': showErrorMsg(slideValid.DisplayOrder) || CheckDuplicate}"
+                               required />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Trạng Thái</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox"
+                               id="TrangThai"
+                               ng-model="slide.Status"
+                               name="TrangThai"
+                               class="k-checkbox" />
+                        <label class="k-checkbox-label" for="TrangThai">Kích Hoạt</label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Hình Ảnh</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-default" ng-click="ChoonseImage()">Chọn Ảnh</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <input class="form-control"
+                               ng-show="false"
+                               name="Image"
+                               id="ImageLabel"
+                               ng-model="slide.Image" />
+                        <div name="Image"
+                             style="width: 100%; height: 150px; margin-top: -34px; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('{{slide.Image}}');"
+                             id="ImagePic"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="slide.SlideID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="slide.CreatedByName"></label>
+                        <input type="hidden" id="CreatedByName" name="CreatedByName" ng-model="slide.CreatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="slide.CreatedDate"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="slide.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="slide.SlideID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="slide.LastUpdatedByName"></label>
+                        <input type="hidden" id="LastUpdatedByName" name="LastUpdatedByName" ng-model="slide.LastUpdatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="slide.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="slide.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnSave"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnSave"
+                            ng-disabled="DisabledBtnSave"
+                            ng-click="save(slideValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> LƯU
+                    </button>
+
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnUpdate"
+                            ng-disabled="DisabledBtnUpdate"
+                            ng-click="update(slideValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> CẬP NHẬT
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger k-grid-delete float-right btn-swidth mr-10"
+                            ng-click="close()">
+                        <i class="fa fa-times" aria-hidden="true"></i> ĐÓNG
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

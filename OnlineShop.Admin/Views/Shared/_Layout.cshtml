@@ -1,0 +1,190 @@
+﻿@using OnlineShop.Admin.Helper
+@{
+                var security = new Security();
+                var isAuthenticated = security.CheckLogin(HttpContext.Current);
+                var userLoged = security.CurrentUser(HttpContext.Current);
+                var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+<!DOCTYPE html>
+<html lang="en" ng-app="osApplication">
+<head>
+    <title>@(ViewBag.Title)</title>
+
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" media="screen">
+    <link href="@Url.Content("~/Content/yamm.css")" rel="stylesheet" type="text/css" media="screen">
+
+    <link href="@Url.Content("~/Content/global.css")" rel="stylesheet" type="text/css" media="screen">
+    <link href="@Url.Content("~/Content/onlineshop.css")" rel="stylesheet" type="text/css" media="screen">
+    <link href="@Url.Content("~/Content/common-style.css")" rel="stylesheet" type="text/css" media="screen">
+    <link href="@Url.Content("~/Content/styleTemplate.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" type="text/css" media="screen">
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/kendo/2017/kendo.common-material.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/kendo/2017/kendo.material.min.css")" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="@Url.Content("~/Scripts/html5shiv.min.3.7.2.js")"></script>
+      <script src="@Url.Content("~/Scripts/respond.min.1.4.2.js")"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/kendo/2017/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2017/kendo.all.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/respond.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.sticky.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/section-bar.js")"></script>
+
+    <!--popup js-->
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+
+    <!--angular-->
+    <script src="@Url.Content("~/Scripts/angular.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-route.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-resource.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-messages.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-cookies.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-kendo.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-sanitize.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/onlineshop/onlineshop.js")"></script>
+
+    <!--for app-->
+    <script src="@Url.Content("~/Scripts/app/constants.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/app.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/directives.js")"></script>
+
+    @RenderSection("head", false)
+</head>
+<body class="layout_homepage">
+    @if (isAuthenticated)
+    {
+        <div class="template">
+            <div class="global-navigation" style="position: fixed;">
+                <header id="onlineshop_header" class="global-nav desktopNav" role="banner" style="box-shadow: rgb(222, 222, 222) 0 0 16px;">
+                    <div class="wrapper">
+                        <section class="header-logo col-sm-2">
+                            <h1>
+                                <a class="navigation-logo" href="@Url.Action("Index", "Home")">
+                                </a>
+                            </h1>
+                        </section>
+                        <span class="app-name text-right col-sm-10">Phần Mềm Quản Lý Bán Hàng</span>
+
+                        <div class="userTitle">
+                            Xin chào - @userLoged.UserGroupName : @userLoged.Name |
+                            @using (Html.BeginForm("Logout", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                <a href="javascript:document.getElementById('logoutForm').submit()" style="color: #003087;">
+                                    Đăng xuất
+                                </a>
+                            }
+                        </div>
+                        <div class="float-right">
+
+                            <div class="navbar navbar-default navbar-static-top yamm sticky" role="navigation">
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li>
+                                            <a href="@Url.Action("Index", "Home")">Dashboard</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">Danh Mục Sản Phẩm<i class="fa fa-angle-down"></i></a>
+                                            <ul class="dropdown-menu multi-level" role="menu">
+                                                <li class="dropdown-submenu">
+                                                    <a href="@Url.Action("Index", "Product")">Sản Phẩm</a>
+                                                    <a href="@Url.Action("Index", "Category")">Danh Mục Loại Sản Phẩm</a>
+                                                    <a href="@Url.Action("Index", "Producer")">Nhà Sản Xuất</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index", "Order")">Đơn Hàng</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index", "FeedBack")">Phản hồi</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">Danh Mục Thông Tin<i class="fa fa-angle-down"></i></a>
+                                            <ul class="dropdown-menu multi-level" role="menu">
+                                                <li class="dropdown-submenu">
+                                                    <a href="@Url.Action("Index", "CategoryContent")">Danh Mục Loại Tin tức</a>
+                                                    <a href="@Url.Action("Index", "Contents")">Tin tức</a>
+                                                    <a href="@Url.Action("Index", "About")">Giới thiệu</a>
+                                                    <a href="@Url.Action("Index", "Slide")">Trình chiếu</a>
+                                                    <a href="@Url.Action("Index", "Contact")">Liên hệ</a>
+                                                    <a href="@Url.Action("Index", "Footer")">Chân trang</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle disabled" data-toggle="dropdown">Người Dùng<i class="fa fa-angle-down"></i></a>
+                                            <ul class="dropdown-menu multi-level" role="menu">
+                                                <li class="dropdown-submenu">
+                                                    <a href="@Url.Action("Index", "User")">Tài khoản</a>
+                                                    <a href="@Url.Action("Index", "UserGroup")">Phân quyền</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Index", "Client/HomeClient")" target="_blank">Client Page</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!--navbar-default-->
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="container">
+                <div class="featured">
+                    <div class="container-fluid">
+                        @*Breadcrumb*@
+                        <ol class="breadcrumb">
+                            <li>
+                                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                @Html.ActionLink("Trang Chủ", "Index", "Home")
+                            </li>
+                            <i class="fa fa-angle-right"></i>
+                            @if (ViewBag.SubMenu != null)
+                            {
+                                <li>
+                                    <a href="javascript:void(0)">@ViewBag.SubMenu</a>
+                                </li>
+                                <i class="fa fa-angle-right"></i>
+                            }
+                            <li>
+                                <a href="javascript:void(0)">@ViewBag.Title</a>
+                            </li>
+                            @RenderSection("breadcum", false)
+                        </ol>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+            <div class="global-footer">
+                <footer class="module-footer bg-white">
+                    <div class="col-sm-12">
+                        <div class="footer-link">
+                        </div>
+                    </div>
+                    <div class="footer-footerText">
+                        <div class="footer-footerText-content">
+                            <p>&copy; @DateTime.Now.Year - Services Pte. Ltd. (Registration No: 200003956G), a Singapore incorporated company and a member firm of the  network of independent member firms affiliated with  International Cooperative (“ International”), a Swiss entity. All rights reserved.  International Cooperative (“ International”) is a Swiss entity. ColumnName firms of the  network of independent firms are affiliated with  International.  International provides no client services. No member firm has any authority to obligate or bind  International or any other member firm vis-à-vis third parties, nor does  International have any such authority to obligate or bind any member firm.</p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    }
+    else
+    {
+        Response.Redirect("~/Login/Index?returnUrl=" + Server.UrlEncode(HttpContext.Current.Request.Url.PathAndQuery));
+    }
+    @RenderSection("script", false)
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Liên Hệ";
+    ViewBag.Message = "EnableSlider";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .has-error {
+        border: 1px solid red !important;
+    }
+
+    .mr-15 {
+        margin-right: 0px !important;
+    }
+
+    .alert-danger {
+        color: #b94a48;
+        background-color: #f2dede;
+        border-color: #eed3d7 !important;
+    }
+
+    .alert {
+        padding: 10px !important;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+</style>
+<script src="@Url.Content("~/Scripts/app/clientController/bindDataForClientContactPage.js")"></script>
+@using (Ajax.BeginForm("Contact", "HomeClient", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "feebbackValid", @id = "feebbackValid", @novalidate = "novalidate" }))
+{
+    <div class="wrap" ng-controller="bindDataForClientContactPage">
+        <div class="preview-page">
+            <ul class="back-links">
+                <li><a href="@Url.Action("Index", "HomeClient")">Trang Chủ</a> ::</li>
+                <li>Liên Hệ</li>
+            </ul>
+            <div class="clear"></div>
+            <div class="product-details" ng-repeat="contact in BindDataForClientContactPage">
+                <p ng-bind-html="contact.Content"></p>
+            </div>
+            <div class="clear"></div>
+            <div class="contact-form" style="padding: 0 0;">
+                <h3>Mục Phản Hồi Khách Hàng</h3>
+                <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                    <ul style="margin-bottom:0;">
+                        <li style="font-size: 14px;" ng-show="showErrorMsg(feebbackValid.Name)">Tên Không Được Để Trống</li>
+                        <li style="font-size: 14px;" ng-show="showErrorMsg(feebbackValid.Phone)">Số Điện Thoại Không Được Để Trống</li>
+                        <li style="font-size: 14px;" ng-show="showErrorMsg(feebbackValid.Content)">Nội Dung Phản Hồi Không Được Để Trống</li>
+                    </ul>
+                </div>
+                <div>
+                    <input name="Name"
+                           type="text"
+                           class="textbox textbox1"
+                           ng-model="feebback.Name"
+                           ng-class="{'has-error': showErrorMsg(feebbackValid.Name)}"
+                           required
+                           placeholder="Name...">
+
+                    <input name="Phone"
+                           type="text"
+                           class="textbox"
+                           ng-model="feebback.Phone"
+                           ng-class="{'has-error': showErrorMsg(feebbackValid.Phone)}"
+                           required
+                           numbers-Only
+                           placeholder="Phone...">
+
+                    <input name="Email"
+                           type="text"
+                           class="textbox"
+                           ng-model="feebback.Email"
+                           placeholder="Email...">
+
+                    <input name="Address"
+                           type="text"
+                           class="textbox"
+                           ng-model="feebback.Address"
+                           placeholder="Address...">
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <span>
+                        <textarea name="Content"
+                                  ng-model="feebback.Content"
+                                  ng-class="{'has-error': showErrorMsg(feebbackValid.Content)}"
+                                  required
+                                  placeholder="Message..."></textarea>
+                    </span>
+                </div>
+                <div>
+                    <button type="button"
+                            id="btnSave"
+                            class="mybutton"
+                            ng-click="save(feebbackValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> Gửi Yêu Cầu
+                    </button>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

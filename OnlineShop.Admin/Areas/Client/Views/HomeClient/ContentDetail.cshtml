@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Chi Tiết Tin Tức";
+    ViewBag.Message = "EnableSlider";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+}
+
+<script src="@Url.Content("~/Scripts/app/clientController/contentDetailController.js")"></script>
+<link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" media="all">
+
+<div class="wrap" ng-controller="contentDetailController">
+    <div class="preview-page">
+        <div class="section group">
+            <div class="cont-desc span_1_of_2">
+                <ul class="back-links">
+                    <li><a href="@Url.Action("Index", "HomeClient")">Trang Chủ</a> ::</li>
+                    <li><a href="/Client/HomeClient/ContentByCategoryContent?id={{GetContentByIdForClientHomePage.CategoryContentID}}">{{GetContentByIdForClientHomePage.CategoryContentName}}</a></li>
+                </ul>
+                <div class="clear"> </div>
+                <div class="product-details">
+                    <h2>{{GetContentByIdForClientHomePage.Title}} </h2>
+                    <p>
+                        <span style="color: #A0A0A0;">Bởi</span> <span style="color:#F70D28;">{{GetContentByIdForClientHomePage.CreatedByName}}</span> &nbsp;&nbsp;
+                        <i class="fa fa-heart" style="color:#9F0000;"></i>
+                        <i class="fa fa-heart" style="color:#9F0000;"></i>
+                        <i class="fa fa-heart" style="color:#9F0000;"></i>
+                        <i class="fa fa-heart" style="color:#9F0000;"></i>
+                        <i class="fa fa-heart" style="color:#9F0000;"></i>&nbsp;&nbsp;
+                        <i style="font-style: italic;color: #A0A0A0;">Ngày đăng : {{GetContentByIdForClientHomePage.CreatedDate | date:"dd/MM/yyyy lúc HH:mm"}}</i>
+                    </p>
+                    <p><strong>{{GetContentByIdForClientHomePage.Description}}</strong></p>
+                    <div class="wish-list" style="padding-top: 10px;border-top: 1px solid #EBEBEB;" ng-bind-html="GetContentByIdForClientHomePage.Detail"></div>
+                    <div class="wish-list" style="padding-top: 10px;border-top: 1px solid #EBEBEB;"> <strong>Nguồn bài viết:</strong>&nbsp;<span>{{GetContentByIdForClientHomePage.ContenSource}}</span></div>
+                </div>
+            </div>
+            <div class="rightsidebar span_3_of_1 sidebar">
+                <h3>Tin Tức Liên Quan</h3>
+                <ul class="popular-products">
+                    <li ng-repeat="contentrelated in BindContentRelatedForClientContentDetailPage">
+                        <a href="/Client/HomeClient/ContentDetail?id={{contentrelated.ContentID}}"><img ng-src="{{contentrelated.Image}}" alt="" style="max-width: 60%;"></a>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <a href="/Client/HomeClient/ContentDetail?id={{contentrelated.ContentID}}" style="font-size: 14px; color: #e44f2b; letter-spacing: -0.02em;">
+                                    {{contentrelated.Title}}
+                                </a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

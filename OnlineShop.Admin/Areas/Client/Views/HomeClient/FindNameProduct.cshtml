@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Kết Quả Tìm Kiếm";
+    ViewBag.Message = "EnableSlider";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+    string productName = ViewBag.ProductName;
+}
+
+<div class="wrap" ng-controller="findNameProductController">
+    <div class="preview-page">
+        <div class="section group">
+            <label hidden id="productNameQuery">@productName</label>
+            <ul class="back-links">
+                <li>Từ Khóa :</li>
+                <li>"@productName"</li>
+            </ul>
+
+            <div class="clear"></div>
+            <div class="product-details">
+                <div class="grid_1_of_4 images_1_of_4" ng-repeat="findproducts in GetProduct">
+                    <h4><a href="/Client/HomeClient/ProductDetail?id={{findproducts.ProductID}}">{{findproducts.Name}}</a></h4>
+                    <a href="/Client/HomeClient/ProductDetail?id={{findproducts.ProductID}}"><img ng-src="{{findproducts.Image}}" alt="" style="width:120px; height:120px;" /></a>
+                    <div class="price-details">
+                        <div class="price-number">
+                            <p ng-show="findproducts.Discount != null && findproducts.Discount != 0">
+                                <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{findproducts.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                                <span class="rupees">{{findproducts.Discount | number : 0}}<sup>vnđ</sup></span>
+                            </p>
+                            <p ng-show="findproducts.Discount == null || findproducts.Discount == 0">
+                                <span class="rupees">{{findproducts.Price | number : 0}}<sup>vnđ</sup></span>
+                            </p>
+                        </div>
+                        <div class="add-cart">
+                            <h4>
+                                <a href="" class="addToCart" data-id="{{findproducts.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                            </h4>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

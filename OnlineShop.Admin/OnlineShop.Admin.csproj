@@ -1,0 +1,2157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{967E381E-3A52-42D5-B737-93441458653A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineShop.Admin</RootNamespace>
+    <AssemblyName>OnlineShop.Admin</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ckfinder\bin\Debug\CKFinder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.9.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.9.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.9.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\AboutController.cs" />
+    <Compile Include="Api\CategoryContentController.cs" />
+    <Compile Include="Api\CategoryController.cs" />
+    <Compile Include="Api\ContactController.cs" />
+    <Compile Include="Api\ContentsController.cs" />
+    <Compile Include="Api\FeedBackController.cs" />
+    <Compile Include="Api\FooterController.cs" />
+    <Compile Include="Api\HomeClientController.cs" />
+    <Compile Include="Api\OrderController.cs" />
+    <Compile Include="Api\ProducerController.cs" />
+    <Compile Include="Api\ProductController.cs" />
+    <Compile Include="Api\SlideController.cs" />
+    <Compile Include="Api\UserController.cs" />
+    <Compile Include="Api\UserGroupController.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CrossSiteConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\HomeClientController.cs" />
+    <Compile Include="Areas\Client\Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CategoryContentController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContentsController.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
+    <Compile Include="Controllers\FooterController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProducerController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SlideController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserGroupController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Security.cs" />
+    <Compile Include="Models\ShoppingCartViewModel.cs" />
+    <Compile Include="Models\UserIdentity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ckfinder\bin\Debug\CKFinder.dll" />
+    <Content Include="ckfinder\bin\Debug\CKFinder.pdb" />
+    <Content Include="ckfinder\bin\Debug\CKFinder_FileEditor.dll" />
+    <Content Include="ckfinder\bin\Debug\CKFinder_FileEditor.pdb" />
+    <Content Include="ckfinder\bin\Debug\CKFinder_ImageResize.dll" />
+    <Content Include="ckfinder\bin\Debug\CKFinder_ImageResize.pdb" />
+    <Content Include="ckfinder\bin\Debug\CKFinder_Watermark.dll" />
+    <Content Include="ckfinder\bin\Debug\CKFinder_Watermark.pdb" />
+    <Content Include="ckfinder\bin\Release\CKFinder.dll" />
+    <Content Include="ckfinder\bin\Release\CKFinder_FileEditor.dll" />
+    <Content Include="ckfinder\bin\Release\CKFinder_FileEditor.pdb" />
+    <Content Include="ckfinder\bin\Release\CKFinder_ImageResize.dll" />
+    <Content Include="ckfinder\bin\Release\CKFinder_ImageResize.pdb" />
+    <Content Include="ckfinder\bin\Release\CKFinder_Watermark.dll" />
+    <Content Include="ckfinder\bin\Release\CKFinder_Watermark.pdb" />
+    <Content Include="ckfinder\changelog.txt" />
+    <Content Include="ckfinder\ckfinder.html" />
+    <Content Include="ckfinder\ckfinder.js" />
+    <Content Include="ckfinder\ckfinder_v1.js" />
+    <Content Include="ckfinder\config.ascx" />
+    <Content Include="ckfinder\config.js" />
+    <Content Include="ckfinder\core\connector\aspx\connector.aspx" />
+    <Content Include="ckfinder\core\connector\aspx\lang\bg.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ca.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\cs.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\cy.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\da.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\de.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\el.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\en.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\eo.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\es-mx.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\es.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\et.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\fa.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\fi.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\fr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\gu.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\he.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\hi.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\hr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\hu.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\it.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ja.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\lt.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\lv.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\nb.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\nl.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\nn.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\no.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\pl.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\pt-br.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ro.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\ru.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sk.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sl.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\sv.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\tr.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\vi.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\zh-cn.xml" />
+    <Content Include="ckfinder\core\connector\aspx\lang\zh-tw.xml" />
+    <Content Include="ckfinder\help\cs\files\001.html" />
+    <Content Include="ckfinder\help\cs\files\002.html" />
+    <Content Include="ckfinder\help\cs\files\003.html" />
+    <Content Include="ckfinder\help\cs\files\004.html" />
+    <Content Include="ckfinder\help\cs\files\005.html" />
+    <Content Include="ckfinder\help\cs\files\006.html" />
+    <Content Include="ckfinder\help\cs\files\007.html" />
+    <Content Include="ckfinder\help\cs\files\008.html" />
+    <Content Include="ckfinder\help\cs\files\009.html" />
+    <Content Include="ckfinder\help\cs\files\010.html" />
+    <Content Include="ckfinder\help\cs\files\011.html" />
+    <Content Include="ckfinder\help\cs\files\012.html" />
+    <Content Include="ckfinder\help\cs\files\013.html" />
+    <Content Include="ckfinder\help\cs\files\014.html" />
+    <Content Include="ckfinder\help\cs\files\015.html" />
+    <Content Include="ckfinder\help\cs\files\header.html" />
+    <Content Include="ckfinder\help\cs\files\license.html" />
+    <Content Include="ckfinder\help\cs\files\suggestions.html" />
+    <Content Include="ckfinder\help\cs\files\toc.html" />
+    <Content Include="ckfinder\help\cs\index.html" />
+    <Content Include="ckfinder\help\en\files\001.html" />
+    <Content Include="ckfinder\help\en\files\002.html" />
+    <Content Include="ckfinder\help\en\files\003.html" />
+    <Content Include="ckfinder\help\en\files\004.html" />
+    <Content Include="ckfinder\help\en\files\005.html" />
+    <Content Include="ckfinder\help\en\files\006.html" />
+    <Content Include="ckfinder\help\en\files\007.html" />
+    <Content Include="ckfinder\help\en\files\008.html" />
+    <Content Include="ckfinder\help\en\files\009.html" />
+    <Content Include="ckfinder\help\en\files\010.html" />
+    <Content Include="ckfinder\help\en\files\011.html" />
+    <Content Include="ckfinder\help\en\files\012.html" />
+    <Content Include="ckfinder\help\en\files\013.html" />
+    <Content Include="ckfinder\help\en\files\014.html" />
+    <Content Include="ckfinder\help\en\files\015.html" />
+    <Content Include="ckfinder\help\en\files\header.html" />
+    <Content Include="ckfinder\help\en\files\license.html" />
+    <Content Include="ckfinder\help\en\files\suggestions.html" />
+    <Content Include="ckfinder\help\en\files\toc.html" />
+    <Content Include="ckfinder\help\en\index.html" />
+    <Content Include="ckfinder\help\es-mx\files\001.html" />
+    <Content Include="ckfinder\help\es-mx\files\002.html" />
+    <Content Include="ckfinder\help\es-mx\files\003.html" />
+    <Content Include="ckfinder\help\es-mx\files\004.html" />
+    <Content Include="ckfinder\help\es-mx\files\005.html" />
+    <Content Include="ckfinder\help\es-mx\files\006.html" />
+    <Content Include="ckfinder\help\es-mx\files\007.html" />
+    <Content Include="ckfinder\help\es-mx\files\008.html" />
+    <Content Include="ckfinder\help\es-mx\files\009.html" />
+    <Content Include="ckfinder\help\es-mx\files\010.html" />
+    <Content Include="ckfinder\help\es-mx\files\011.html" />
+    <Content Include="ckfinder\help\es-mx\files\012.html" />
+    <Content Include="ckfinder\help\es-mx\files\013.html" />
+    <Content Include="ckfinder\help\es-mx\files\header.html" />
+    <Content Include="ckfinder\help\es-mx\files\images\001.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\002.gif" />
+    <Content Include="ckfinder\help\es-mx\files\images\003.gif" />
+    <Content Include="ckfinder\help\es-mx\files\images\004.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\005.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\006.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\007.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\008.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\009.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\010.gif" />
+    <Content Include="ckfinder\help\es-mx\files\images\011.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\012.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\013.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\014.gif" />
+    <Content Include="ckfinder\help\es-mx\files\images\015.gif" />
+    <Content Include="ckfinder\help\es-mx\files\images\016.gif" />
+    <Content Include="ckfinder\help\es-mx\files\images\017.gif" />
+    <Content Include="ckfinder\help\es-mx\files\images\018.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\019.png" />
+    <Content Include="ckfinder\help\es-mx\files\images\020.png" />
+    <Content Include="ckfinder\help\es-mx\files\license.html" />
+    <Content Include="ckfinder\help\es-mx\files\suggestions.html" />
+    <Content Include="ckfinder\help\es-mx\files\toc.html" />
+    <Content Include="ckfinder\help\es-mx\index.html" />
+    <Content Include="ckfinder\help\es\files\001.html" />
+    <Content Include="ckfinder\help\es\files\002.html" />
+    <Content Include="ckfinder\help\es\files\003.html" />
+    <Content Include="ckfinder\help\es\files\004.html" />
+    <Content Include="ckfinder\help\es\files\005.html" />
+    <Content Include="ckfinder\help\es\files\006.html" />
+    <Content Include="ckfinder\help\es\files\007.html" />
+    <Content Include="ckfinder\help\es\files\008.html" />
+    <Content Include="ckfinder\help\es\files\009.html" />
+    <Content Include="ckfinder\help\es\files\010.html" />
+    <Content Include="ckfinder\help\es\files\011.html" />
+    <Content Include="ckfinder\help\es\files\012.html" />
+    <Content Include="ckfinder\help\es\files\013.html" />
+    <Content Include="ckfinder\help\es\files\header.html" />
+    <Content Include="ckfinder\help\es\files\images\001.png" />
+    <Content Include="ckfinder\help\es\files\images\002.gif" />
+    <Content Include="ckfinder\help\es\files\images\003.gif" />
+    <Content Include="ckfinder\help\es\files\images\004.png" />
+    <Content Include="ckfinder\help\es\files\images\005.png" />
+    <Content Include="ckfinder\help\es\files\images\006.png" />
+    <Content Include="ckfinder\help\es\files\images\007.png" />
+    <Content Include="ckfinder\help\es\files\images\008.png" />
+    <Content Include="ckfinder\help\es\files\images\009.png" />
+    <Content Include="ckfinder\help\es\files\images\010.gif" />
+    <Content Include="ckfinder\help\es\files\images\011.png" />
+    <Content Include="ckfinder\help\es\files\images\012.png" />
+    <Content Include="ckfinder\help\es\files\images\013.png" />
+    <Content Include="ckfinder\help\es\files\images\014.gif" />
+    <Content Include="ckfinder\help\es\files\images\015.gif" />
+    <Content Include="ckfinder\help\es\files\images\016.gif" />
+    <Content Include="ckfinder\help\es\files\images\017.gif" />
+    <Content Include="ckfinder\help\es\files\images\018.png" />
+    <Content Include="ckfinder\help\es\files\images\019.png" />
+    <Content Include="ckfinder\help\es\files\images\020.png" />
+    <Content Include="ckfinder\help\es\files\license.html" />
+    <Content Include="ckfinder\help\es\files\suggestions.html" />
+    <Content Include="ckfinder\help\es\files\toc.html" />
+    <Content Include="ckfinder\help\es\index.html" />
+    <Content Include="ckfinder\help\files\images\002.gif" />
+    <Content Include="ckfinder\help\files\images\003.gif" />
+    <Content Include="ckfinder\help\files\images\CKFinder_basket_clear.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_basket_drag.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_basket_empty.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_basket_file_menu.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_basket_remove.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_already_exists.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_copied.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_delete.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_display_01.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_display_02.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_display_03.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_display_04.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_drag_copy.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_drag_move.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_menu.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_moved.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_pane.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_rename.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_resize.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_resize_both.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_resize_new.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_resize_overwrite.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_resize_resized.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_resize_thumbnails.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_select_hovered.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_select_selected.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_select_unselected.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_view_list.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_file_view_thumbnails.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_collapse.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_copied_from_basket.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_delete.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_expand.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_loading.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_menu.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_moved_from_basket.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_new.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_pane.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_rename.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_folder_select.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_interface.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_menu_arrow.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_menu_arrows.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_resize_lock.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_resize_reset.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_resize_unlock.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_settings.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_status_empty.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_status_file.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_status_folder.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_toolbar.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_toolbar_help.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_toolbar_refresh.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_upload_01.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_upload_03.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_upload_04.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_upload_09.png" />
+    <Content Include="ckfinder\help\files\images\CKFinder_upload_10.png" />
+    <Content Include="ckfinder\help\files\other\help.css" />
+    <Content Include="ckfinder\help\files\other\help.js" />
+    <Content Include="ckfinder\help\fi\files\001.html" />
+    <Content Include="ckfinder\help\fi\files\002.html" />
+    <Content Include="ckfinder\help\fi\files\003.html" />
+    <Content Include="ckfinder\help\fi\files\004.html" />
+    <Content Include="ckfinder\help\fi\files\005.html" />
+    <Content Include="ckfinder\help\fi\files\006.html" />
+    <Content Include="ckfinder\help\fi\files\007.html" />
+    <Content Include="ckfinder\help\fi\files\008.html" />
+    <Content Include="ckfinder\help\fi\files\009.html" />
+    <Content Include="ckfinder\help\fi\files\010.html" />
+    <Content Include="ckfinder\help\fi\files\011.html" />
+    <Content Include="ckfinder\help\fi\files\012.html" />
+    <Content Include="ckfinder\help\fi\files\013.html" />
+    <Content Include="ckfinder\help\fi\files\header.html" />
+    <Content Include="ckfinder\help\fi\files\images\001.gif" />
+    <Content Include="ckfinder\help\fi\files\images\002.gif" />
+    <Content Include="ckfinder\help\fi\files\images\003.gif" />
+    <Content Include="ckfinder\help\fi\files\images\004.gif" />
+    <Content Include="ckfinder\help\fi\files\images\005.gif" />
+    <Content Include="ckfinder\help\fi\files\images\006.gif" />
+    <Content Include="ckfinder\help\fi\files\images\007.gif" />
+    <Content Include="ckfinder\help\fi\files\images\008.gif" />
+    <Content Include="ckfinder\help\fi\files\images\009.gif" />
+    <Content Include="ckfinder\help\fi\files\images\010.gif" />
+    <Content Include="ckfinder\help\fi\files\images\011.gif" />
+    <Content Include="ckfinder\help\fi\files\images\012.gif" />
+    <Content Include="ckfinder\help\fi\files\images\013.gif" />
+    <Content Include="ckfinder\help\fi\files\images\014.gif" />
+    <Content Include="ckfinder\help\fi\files\images\015.gif" />
+    <Content Include="ckfinder\help\fi\files\images\016.gif" />
+    <Content Include="ckfinder\help\fi\files\images\017.gif" />
+    <Content Include="ckfinder\help\fi\files\images\018.gif" />
+    <Content Include="ckfinder\help\fi\files\images\019.gif" />
+    <Content Include="ckfinder\help\fi\files\images\020.gif" />
+    <Content Include="ckfinder\help\fi\files\license.html" />
+    <Content Include="ckfinder\help\fi\files\suggestions.html" />
+    <Content Include="ckfinder\help\fi\files\toc.html" />
+    <Content Include="ckfinder\help\fi\index.html" />
+    <Content Include="ckfinder\help\lt\files\001.html" />
+    <Content Include="ckfinder\help\lt\files\002.html" />
+    <Content Include="ckfinder\help\lt\files\003.html" />
+    <Content Include="ckfinder\help\lt\files\004.html" />
+    <Content Include="ckfinder\help\lt\files\005.html" />
+    <Content Include="ckfinder\help\lt\files\006.html" />
+    <Content Include="ckfinder\help\lt\files\007.html" />
+    <Content Include="ckfinder\help\lt\files\008.html" />
+    <Content Include="ckfinder\help\lt\files\009.html" />
+    <Content Include="ckfinder\help\lt\files\010.html" />
+    <Content Include="ckfinder\help\lt\files\011.html" />
+    <Content Include="ckfinder\help\lt\files\012.html" />
+    <Content Include="ckfinder\help\lt\files\013.html" />
+    <Content Include="ckfinder\help\lt\files\header.html" />
+    <Content Include="ckfinder\help\lt\files\images\001.gif" />
+    <Content Include="ckfinder\help\lt\files\images\002.gif" />
+    <Content Include="ckfinder\help\lt\files\images\003.gif" />
+    <Content Include="ckfinder\help\lt\files\images\004.gif" />
+    <Content Include="ckfinder\help\lt\files\images\005.gif" />
+    <Content Include="ckfinder\help\lt\files\images\006.gif" />
+    <Content Include="ckfinder\help\lt\files\images\007.gif" />
+    <Content Include="ckfinder\help\lt\files\images\008.gif" />
+    <Content Include="ckfinder\help\lt\files\images\009.gif" />
+    <Content Include="ckfinder\help\lt\files\images\010.gif" />
+    <Content Include="ckfinder\help\lt\files\images\011.gif" />
+    <Content Include="ckfinder\help\lt\files\images\012.gif" />
+    <Content Include="ckfinder\help\lt\files\images\013.gif" />
+    <Content Include="ckfinder\help\lt\files\images\014.gif" />
+    <Content Include="ckfinder\help\lt\files\images\015.gif" />
+    <Content Include="ckfinder\help\lt\files\images\016.gif" />
+    <Content Include="ckfinder\help\lt\files\images\017.gif" />
+    <Content Include="ckfinder\help\lt\files\images\018.gif" />
+    <Content Include="ckfinder\help\lt\files\images\019.gif" />
+    <Content Include="ckfinder\help\lt\files\images\020.gif" />
+    <Content Include="ckfinder\help\lt\files\license.html" />
+    <Content Include="ckfinder\help\lt\files\suggestions.html" />
+    <Content Include="ckfinder\help\lt\files\toc.html" />
+    <Content Include="ckfinder\help\lt\index.html" />
+    <Content Include="ckfinder\help\pl\files\001.html" />
+    <Content Include="ckfinder\help\pl\files\002.html" />
+    <Content Include="ckfinder\help\pl\files\003.html" />
+    <Content Include="ckfinder\help\pl\files\004.html" />
+    <Content Include="ckfinder\help\pl\files\005.html" />
+    <Content Include="ckfinder\help\pl\files\006.html" />
+    <Content Include="ckfinder\help\pl\files\007.html" />
+    <Content Include="ckfinder\help\pl\files\008.html" />
+    <Content Include="ckfinder\help\pl\files\009.html" />
+    <Content Include="ckfinder\help\pl\files\010.html" />
+    <Content Include="ckfinder\help\pl\files\011.html" />
+    <Content Include="ckfinder\help\pl\files\012.html" />
+    <Content Include="ckfinder\help\pl\files\013.html" />
+    <Content Include="ckfinder\help\pl\files\014.html" />
+    <Content Include="ckfinder\help\pl\files\015.html" />
+    <Content Include="ckfinder\help\pl\files\header.html" />
+    <Content Include="ckfinder\help\pl\files\license.html" />
+    <Content Include="ckfinder\help\pl\files\suggestions.html" />
+    <Content Include="ckfinder\help\pl\files\toc.html" />
+    <Content Include="ckfinder\help\pl\index.html" />
+    <Content Include="ckfinder\install.txt" />
+    <Content Include="ckfinder\lang\bg.js" />
+    <Content Include="ckfinder\lang\ca.js" />
+    <Content Include="ckfinder\lang\cs.js" />
+    <Content Include="ckfinder\lang\cy.js" />
+    <Content Include="ckfinder\lang\da.js" />
+    <Content Include="ckfinder\lang\de.js" />
+    <Content Include="ckfinder\lang\el.js" />
+    <Content Include="ckfinder\lang\en.js" />
+    <Content Include="ckfinder\lang\eo.js" />
+    <Content Include="ckfinder\lang\es-mx.js" />
+    <Content Include="ckfinder\lang\es.js" />
+    <Content Include="ckfinder\lang\et.js" />
+    <Content Include="ckfinder\lang\fa.js" />
+    <Content Include="ckfinder\lang\fi.js" />
+    <Content Include="ckfinder\lang\fr.js" />
+    <Content Include="ckfinder\lang\gu.js" />
+    <Content Include="ckfinder\lang\he.js" />
+    <Content Include="ckfinder\lang\hi.js" />
+    <Content Include="ckfinder\lang\hr.js" />
+    <Content Include="ckfinder\lang\hu.js" />
+    <Content Include="ckfinder\lang\it.js" />
+    <Content Include="ckfinder\lang\ja.js" />
+    <Content Include="ckfinder\lang\lt.js" />
+    <Content Include="ckfinder\lang\lv.js" />
+    <Content Include="ckfinder\lang\nb.js" />
+    <Content Include="ckfinder\lang\nl.js" />
+    <Content Include="ckfinder\lang\nn.js" />
+    <Content Include="ckfinder\lang\no.js" />
+    <Content Include="ckfinder\lang\pl.js" />
+    <Content Include="ckfinder\lang\pt-br.js" />
+    <Content Include="ckfinder\lang\ro.js" />
+    <Content Include="ckfinder\lang\ru.js" />
+    <Content Include="ckfinder\lang\sk.js" />
+    <Content Include="ckfinder\lang\sl.js" />
+    <Content Include="ckfinder\lang\sr.js" />
+    <Content Include="ckfinder\lang\sv.js" />
+    <Content Include="ckfinder\lang\tr.js" />
+    <Content Include="ckfinder\lang\vi.js" />
+    <Content Include="ckfinder\lang\zh-cn.js" />
+    <Content Include="ckfinder\lang\zh-tw.js" />
+    <Content Include="ckfinder\lang\_translationstatus.txt" />
+    <Content Include="ckfinder\license.txt" />
+    <Content Include="ckfinder\plugins\dummy\lang\en.js" />
+    <Content Include="ckfinder\plugins\dummy\lang\pl.js" />
+    <Content Include="ckfinder\plugins\dummy\plugin.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\addon\mode\overlay.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\lib\codemirror.css" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\lib\codemirror.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\clike\clike.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\css\css.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\htmlmixed\htmlmixed.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\javascript\javascript.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\markdown\markdown.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\perl\perl.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\python\python.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\rst\rst.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\ruby\ruby.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\sass\sass.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\sql\sql.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\stex\stex.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\mode\xml\xml.js" />
+    <Content Include="ckfinder\plugins\fileeditor\plugin.js" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\colorbox.css" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\border.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\controls.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderBottomCenter.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderBottomLeft.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderBottomRight.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderMiddleLeft.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderMiddleRight.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderTopCenter.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderTopLeft.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\ie6\borderTopRight.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\loading.gif" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\loading_background.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\images\overlay.png" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\jquery.colorbox-min.js" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\jquery.min.js" />
+    <Content Include="ckfinder\plugins\gallery\colorbox\license.txt" />
+    <Content Include="ckfinder\plugins\imageresize\images\mini.gif" />
+    <Content Include="ckfinder\plugins\imageresize\plugin.js" />
+    <Content Include="ckfinder\plugins\watermark\logo.gif" />
+    <Content Include="ckfinder\skins\bootstrap\app.css" />
+    <Content Include="ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ckfinder\skins\bootstrap\host.css" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\ai.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\avi.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\bmp.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\cs.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\default.icon.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\dll.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\doc.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\docx.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\exe.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\fla.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\gif.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\jpg.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\js.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\mdb.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\mp3.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\ogg.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\pdf.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\ppt.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\pptx.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\rdp.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\swf.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\swt.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\txt.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\vsd.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\xls.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\xlsx.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\xml.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\16\zip.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\ai.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\avi.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\cs.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\default.icon.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\dll.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\doc.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\docx.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\exe.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\fla.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\gif.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\jpg.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\js.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\mdb.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\mp3.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\ogg.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\pdf.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\ppt.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\pptx.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\rdp.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\swf.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\swt.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\txt.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\vsd.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\xls.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\xlsx.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\xml.png" />
+    <Content Include="ckfinder\skins\bootstrap\images\icons\32\zip.png" />
+    <Content Include="ckfinder\skins\bootstrap\skin.js" />
+    <Content Include="ckfinder\skins\bootstrap\uipanel.css" />
+    <Content Include="ckfinder\skins\kama\app.css" />
+    <Content Include="ckfinder\skins\kama\host.css" />
+    <Content Include="ckfinder\skins\kama\images\ckffolder.gif" />
+    <Content Include="ckfinder\skins\kama\images\ckffolderopened.gif" />
+    <Content Include="ckfinder\skins\kama\images\ckfminus.gif" />
+    <Content Include="ckfinder\skins\kama\images\ckfnothumb.gif" />
+    <Content Include="ckfinder\skins\kama\images\ckfplus.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons.png" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\ai.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\avi.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\bmp.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\cs.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\default.icon.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\dll.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\doc.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\docx.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\exe.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\fla.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\gif.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\jpg.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\js.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\mdb.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\mp3.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\ogg.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\pdf.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\ppt.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\pptx.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\rdp.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\swf.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\swt.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\txt.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\vsd.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\xls.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\xlsx.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\xml.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\16\zip.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\ai.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\avi.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\bmp.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\cs.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\default.icon.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\dll.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\doc.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\docx.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\exe.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\fla.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\gif.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\jpg.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\js.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\mdb.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\mp3.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\ogg.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\ogg.png" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\pdf.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\ppt.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\pptx.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\rdp.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\swf.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\swt.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\txt.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\vsd.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\xls.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\xlsx.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\xml.gif" />
+    <Content Include="ckfinder\skins\kama\images\icons\32\zip.gif" />
+    <Content Include="ckfinder\skins\kama\images\loaders\16x16.gif" />
+    <Content Include="ckfinder\skins\kama\images\loaders\32x32.gif" />
+    <Content Include="ckfinder\skins\kama\images\spacer.gif" />
+    <Content Include="ckfinder\skins\kama\images\sprites.png" />
+    <Content Include="ckfinder\skins\kama\images\sprites_ie6.png" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\add.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\clear_basket.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\delete.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\download.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\help.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\maximize.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\refresh.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\settings.gif" />
+    <Content Include="ckfinder\skins\kama\images\toolbar\view.gif" />
+    <Content Include="ckfinder\skins\kama\richcombo.css" />
+    <Content Include="ckfinder\skins\kama\skin.js" />
+    <Content Include="ckfinder\skins\kama\uipanel.css" />
+    <Content Include="ckfinder\skins\v1\app.css" />
+    <Content Include="ckfinder\skins\v1\host.css" />
+    <Content Include="ckfinder\skins\v1\images\ckffolder.gif" />
+    <Content Include="ckfinder\skins\v1\images\ckffolderopened.gif" />
+    <Content Include="ckfinder\skins\v1\images\ckfminus.gif" />
+    <Content Include="ckfinder\skins\v1\images\ckfnothumb.gif" />
+    <Content Include="ckfinder\skins\v1\images\ckfplus.gif" />
+    <Content Include="ckfinder\skins\v1\images\dialog_sides.gif" />
+    <Content Include="ckfinder\skins\v1\images\dialog_sides.png" />
+    <Content Include="ckfinder\skins\v1\images\dialog_sides_rtl.png" />
+    <Content Include="ckfinder\skins\v1\images\icons.png" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\ai.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\avi.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\bmp.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\cs.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\default.icon.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\dll.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\doc.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\docx.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\exe.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\fla.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\gif.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\jpg.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\js.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\mdb.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\mp3.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\pdf.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\ppt.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\pptx.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\rdp.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\swf.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\swt.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\txt.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\vsd.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\xls.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\xlsx.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\xml.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\16\zip.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\ai.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\avi.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\bmp.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\cs.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\default.icon.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\dll.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\doc.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\docx.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\exe.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\fla.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\gif.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\jpg.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\js.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\mdb.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\mp3.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\pdf.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\ppt.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\pptx.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\rdp.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\swf.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\swt.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\txt.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\vsd.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\xls.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\xlsx.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\xml.gif" />
+    <Content Include="ckfinder\skins\v1\images\icons\32\zip.gif" />
+    <Content Include="ckfinder\skins\v1\images\loaders\16x16.gif" />
+    <Content Include="ckfinder\skins\v1\images\loaders\32x32.gif" />
+    <Content Include="ckfinder\skins\v1\images\spacer.gif" />
+    <Content Include="ckfinder\skins\v1\images\sprites.png" />
+    <Content Include="ckfinder\skins\v1\images\sprites_ie6.png" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\add.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\clear_basket.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\delete.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\download.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\help.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\maximize.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\refresh.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\settings.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar\view.gif" />
+    <Content Include="ckfinder\skins\v1\images\toolbar_start.gif" />
+    <Content Include="ckfinder\skins\v1\richcombo.css" />
+    <Content Include="ckfinder\skins\v1\skin.js" />
+    <Content Include="ckfinder\skins\v1\uipanel.css" />
+    <Content Include="ckfinder\translations.txt" />
+    <Content Include="Content\About.css" />
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Category.css" />
+    <Content Include="Content\CategoryContent.css" />
+    <Content Include="Content\common-style.css" />
+    <Content Include="Content\common.css" />
+    <Content Include="Content\Contact.css" />
+    <Content Include="Content\Contents.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\carousel.css" />
+    <Content Include="Content\css\easy-responsive-tabs.css" />
+    <Content Include="Content\css\etalage.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\stylelogin.css" />
+    <Content Include="Content\css\styleregister.css" />
+    <Content Include="Content\dataurl.css" />
+    <Content Include="Content\Default\editor.png" />
+    <Content Include="Content\Default\imagebrowser.png" />
+    <Content Include="Content\Default\indeterminate.gif" />
+    <Content Include="Content\Default\loading-image.gif" />
+    <Content Include="Content\Default\loading.gif" />
+    <Content Include="Content\Default\loading_2x.gif" />
+    <Content Include="Content\Default\markers.png" />
+    <Content Include="Content\Default\markers_2x.png" />
+    <Content Include="Content\Default\slider-h.gif" />
+    <Content Include="Content\Default\slider-v.gif" />
+    <Content Include="Content\Default\sprite.png" />
+    <Content Include="Content\Default\sprite_2x.png" />
+    <Content Include="Content\Default\sprite_kpi.png" />
+    <Content Include="Content\Default\sprite_kpi_2x.png" />
+    <Content Include="Content\FeedBack.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Footer.css" />
+    <Content Include="Content\global.css" />
+    <Content Include="Content\Images\2.jpg" />
+    <Content Include="Content\Images\ajax-loader.gif" />
+    <Content Include="Content\Images\arrows.png" />
+    <Content Include="Content\Images\arrow_up.png" />
+    <Content Include="Content\Images\bank_logo.png" />
+    <Content Include="Content\Images\banner-bg.png" />
+    <Content Include="Content\Images\bg.png" />
+    <Content Include="Content\Images\camera.png" />
+    <Content Include="Content\Images\compare.png" />
+    <Content Include="Content\Images\computer.png" />
+    <Content Include="Content\Images\drop_arrow.png" />
+    <Content Include="Content\Images\icon_del.png" />
+    <Content Include="Content\Images\image.jpg" />
+    <Content Include="Content\Images\latest-product-img1.jpg" />
+    <Content Include="Content\Images\latest-product-img2.jpg" />
+    <Content Include="Content\Images\latest-product-img3.jpg" />
+    <Content Include="Content\Images\latest-product-img4.jpg" />
+    <Content Include="Content\Images\latest-product-img5.jpg" />
+    <Content Include="Content\Images\latest-product-img6.jpg" />
+    <Content Include="Content\Images\left-fold.png" />
+    <Content Include="Content\Images\left.png" />
+    <Content Include="Content\Images\line-divider.png" />
+    <Content Include="Content\Images\loading.gif" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\nav-arrow.png" />
+    <Content Include="Content\Images\nav-icon.png" />
+    <Content Include="Content\Images\preview-large-img1.jpg" />
+    <Content Include="Content\Images\preview-large-img2.jpg" />
+    <Content Include="Content\Images\preview-large-img3.jpg" />
+    <Content Include="Content\Images\preview-large-img4.jpg" />
+    <Content Include="Content\Images\preview-small-img1.png" />
+    <Content Include="Content\Images\preview-small-img2.png" />
+    <Content Include="Content\Images\preview-small-img3.png" />
+    <Content Include="Content\Images\preview-small-img4.png" />
+    <Content Include="Content\Images\price-rating.png" />
+    <Content Include="Content\Images\product-img1.jpg" />
+    <Content Include="Content\Images\product-img2.jpg" />
+    <Content Include="Content\Images\product-img3.jpg" />
+    <Content Include="Content\Images\product-img4.jpg" />
+    <Content Include="Content\Images\right-fold.png" />
+    <Content Include="Content\Images\search.png" />
+    <Content Include="Content\Images\slider-img.png" />
+    <Content Include="Content\Images\SLIDE_1600x600_OFF_1.jpg" />
+    <Content Include="Content\Images\social-share.png" />
+    <Content Include="Content\Images\sort_asc.png" />
+    <Content Include="Content\Images\sort_asc_disabled.png" />
+    <Content Include="Content\Images\sort_both.png" />
+    <Content Include="Content\Images\sort_desc.png" />
+    <Content Include="Content\Images\stripes.png" />
+    <Content Include="Content\Images\tag.png" />
+    <Content Include="Content\Images\tick.png" />
+    <Content Include="Content\Images\wishlist.png" />
+    <Content Include="Content\Images\zoom.png" />
+    <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\easing.js" />
+    <Content Include="Content\js\easyResponsiveTabs.js" />
+    <Content Include="Content\js\jquery-1.9.0.min.js" />
+    <Content Include="Content\js\jquery.etalage.min.js" />
+    <Content Include="Content\js\jquery.openCarousel.js" />
+    <Content Include="Content\js\move-top.js" />
+    <Content Include="Content\js\navigation.js" />
+    <Content Include="Content\js\star-rating.js" />
+    <Content Include="Content\kendo.common.min.css" />
+    <Content Include="Content\kendo.dataviz.default.min.css" />
+    <Content Include="Content\kendo.dataviz.min.css" />
+    <Content Include="Content\kendo.default.min.css" />
+    <Content Include="Content\kendo.default.mobile.min.css" />
+    <Content Include="Content\kendo.mobile.all.min.css" />
+    <Content Include="Content\kendo.rtl.min.css" />
+    <Content Include="Content\kendo.timezones.min.js" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\LICENSE.txt" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\KendoUIGlyphs.svg" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\WebComponentsIcons.svg" />
+    <Content Include="Content\kendo\2017\images\back.png" />
+    <Content Include="Content\kendo\2017\images\kendoui.svg" />
+    <Content Include="Content\kendo\2017\images\wp8_icons.png" />
+    <Content Include="Content\kendo\2017\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendo\2017\kendo.common-material.min.css" />
+    <Content Include="Content\kendo\2017\kendo.common.min.css" />
+    <Content Include="Content\kendo\2017\kendo.dataviz.material.min.css" />
+    <Content Include="Content\kendo\2017\kendo.dataviz.min.css" />
+    <Content Include="Content\kendo\2017\kendo.material.min.css" />
+    <Content Include="Content\kendo\2017\kendo.metro.min.css" />
+    <Content Include="Content\kendo\2017\kendo.mobile.all.min.css" />
+    <Content Include="Content\kendo\2017\Material\editor.png" />
+    <Content Include="Content\kendo\2017\Material\imagebrowser.png" />
+    <Content Include="Content\kendo\2017\Material\indeterminate.gif" />
+    <Content Include="Content\kendo\2017\Material\loading-image.gif" />
+    <Content Include="Content\kendo\2017\Material\loading.gif" />
+    <Content Include="Content\kendo\2017\Material\loading_2x.gif" />
+    <Content Include="Content\kendo\2017\Material\markers.png" />
+    <Content Include="Content\kendo\2017\Material\markers_2x.png" />
+    <Content Include="Content\kendo\2017\Material\slider-h.gif" />
+    <Content Include="Content\kendo\2017\Material\slider-v.gif" />
+    <Content Include="Content\kendo\2017\Material\sprite.png" />
+    <Content Include="Content\kendo\2017\Material\sprite_2x.png" />
+    <Content Include="Content\kendo\2017\Material\sprite_kpi.png" />
+    <Content Include="Content\kendo\2017\Material\sprite_kpi_2x.png" />
+    <Content Include="Content\onlineshop.css" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\Order.css" />
+    <Content Include="Content\Producer.css" />
+    <Content Include="Content\Product.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\Slide.css" />
+    <Content Include="Content\styleTemplate.css" />
+    <Content Include="Content\tmpl-home.css" />
+    <Content Include="Content\User.css" />
+    <Content Include="Content\UserGroup.css" />
+    <Content Include="Content\web\upload\default.png" />
+    <Content Include="Content\web\upload\doc.png" />
+    <Content Include="Content\web\upload\jpg.png" />
+    <Content Include="Content\web\upload\pdf.png" />
+    <Content Include="Content\web\upload\xls.png" />
+    <Content Include="Content\web\upload\zip.png" />
+    <Content Include="Content\yamm.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-cookies.min.js" />
+    <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-kendo.js" />
+    <Content Include="Scripts\angular-loader.js" />
+    <Content Include="Scripts\angular-loader.min.js" />
+    <Content Include="Scripts\angular-message-format.js" />
+    <Content Include="Scripts\angular-message-format.min.js" />
+    <Content Include="Scripts\angular-messages.js" />
+    <Content Include="Scripts\angular-messages.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-parse-ext.js" />
+    <Content Include="Scripts\angular-parse-ext.min.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
+    <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular-scenario.js" />
+    <Content Include="Scripts\angular-select2.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\clientController\bindDataForClientAboutPage.js" />
+    <Content Include="Scripts\app\clientController\bindDataForClientContactPage.js" />
+    <Content Include="Scripts\app\clientController\clientContentByCategoryContentHomePage.js" />
+    <Content Include="Scripts\app\clientController\clientContentByCategoryContentID.js" />
+    <Content Include="Scripts\app\clientController\clientHomePage.js" />
+    <Content Include="Scripts\app\clientController\clientProductByCategoryHomePage.js" />
+    <Content Include="Scripts\app\clientController\contentDetailController.js" />
+    <Content Include="Scripts\app\clientController\findNameProductController.js" />
+    <Content Include="Scripts\app\clientController\loginController.js" />
+    <Content Include="Scripts\app\clientController\paymentShoppingCartController.js" />
+    <Content Include="Scripts\app\clientController\productDetailController.js" />
+    <Content Include="Scripts\app\clientController\registerForClientRegisterPage.js" />
+    <Content Include="Scripts\app\clientController\shoppingCart.js" />
+    <Content Include="Scripts\app\clientServices\clientHomePageService.js" />
+    <Content Include="Scripts\app\common.js" />
+    <Content Include="Scripts\app\constants.js" />
+    <Content Include="Scripts\app\controller\aboutController.js" />
+    <Content Include="Scripts\app\controller\categoryContentController.js" />
+    <Content Include="Scripts\app\controller\categoryController.js" />
+    <Content Include="Scripts\app\controller\contactController.js" />
+    <Content Include="Scripts\app\controller\contentsController.js" />
+    <Content Include="Scripts\app\controller\feedBackController.js" />
+    <Content Include="Scripts\app\controller\footerController.js" />
+    <Content Include="Scripts\app\controller\orderController.js" />
+    <Content Include="Scripts\app\controller\producerController.js" />
+    <Content Include="Scripts\app\controller\productController.js" />
+    <Content Include="Scripts\app\controller\registerForAdminController.js" />
+    <Content Include="Scripts\app\controller\slideController.js" />
+    <Content Include="Scripts\app\controller\userController.js" />
+    <Content Include="Scripts\app\controller\userGroupController.js" />
+    <Content Include="Scripts\app\directives.js" />
+    <Content Include="Scripts\app\filters.js" />
+    <Content Include="Scripts\app\models\aboutModel.js" />
+    <Content Include="Scripts\app\models\categoryContentModel.js" />
+    <Content Include="Scripts\app\models\categoryModel.js" />
+    <Content Include="Scripts\app\models\contactModel.js" />
+    <Content Include="Scripts\app\models\contentsModel.js" />
+    <Content Include="Scripts\app\models\feedBackModel.js" />
+    <Content Include="Scripts\app\models\footerModel.js" />
+    <Content Include="Scripts\app\models\orderDetailModel.js" />
+    <Content Include="Scripts\app\models\orderModel.js" />
+    <Content Include="Scripts\app\models\producerModel.js" />
+    <Content Include="Scripts\app\models\productModel.js" />
+    <Content Include="Scripts\app\models\slideModel.js" />
+    <Content Include="Scripts\app\models\userGroupModel.js" />
+    <Content Include="Scripts\app\models\userModel.js" />
+    <Content Include="Scripts\app\services\aboutService.js" />
+    <Content Include="Scripts\app\services\categoryContentService.js" />
+    <Content Include="Scripts\app\services\categoryService.js" />
+    <Content Include="Scripts\app\services\contactService.js" />
+    <Content Include="Scripts\app\services\contentsService.js" />
+    <Content Include="Scripts\app\services\feedBackService.js" />
+    <Content Include="Scripts\app\services\footerService.js" />
+    <Content Include="Scripts\app\services\orderService.js" />
+    <Content Include="Scripts\app\services\producerService.js" />
+    <Content Include="Scripts\app\services\productService.js" />
+    <Content Include="Scripts\app\services\slideService.js" />
+    <Content Include="Scripts\app\services\userGroupService.js" />
+    <Content Include="Scripts\app\services\userService.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\bootstrap-tagsinput-angular.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\console.js" />
+    <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Scripts\datetimepicker.js" />
+    <Content Include="Scripts\globalize.culture\globalize.culture.en-GB.js" />
+    <Content Include="Scripts\globalize.culture\kendo.culture.en-GB.js" />
+    <Content Include="Scripts\GUID.js" />
+    <Content Include="Scripts\html5shiv.min.3.7.2.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_aa.js" />
+    <Content Include="Scripts\i18n\angular-locale_af-na.js" />
+    <Content Include="Scripts\i18n\angular-locale_af-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_af.js" />
+    <Content Include="Scripts\i18n\angular-locale_agq-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_agq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ak-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ak.js" />
+    <Content Include="Scripts\i18n\angular-locale_am-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_am.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ae.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-bh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-eg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-eh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-il.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-jo.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-km.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-kw.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-lb.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ly.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-om.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ps.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-qa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-sa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-sd.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-so.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ss.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-sy.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-td.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-tn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar-ye.js" />
+    <Content Include="Scripts\i18n\angular-locale_ar.js" />
+    <Content Include="Scripts\i18n\angular-locale_as-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_as.js" />
+    <Content Include="Scripts\i18n\angular-locale_asa-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_asa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ast-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_ast.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-cyrl-az.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-latn-az.js" />
+    <Content Include="Scripts\i18n\angular-locale_az-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_az.js" />
+    <Content Include="Scripts\i18n\angular-locale_bas-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_bas.js" />
+    <Content Include="Scripts\i18n\angular-locale_be-by.js" />
+    <Content Include="Scripts\i18n\angular-locale_be.js" />
+    <Content Include="Scripts\i18n\angular-locale_bem-zm.js" />
+    <Content Include="Scripts\i18n\angular-locale_bem.js" />
+    <Content Include="Scripts\i18n\angular-locale_bez-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_bez.js" />
+    <Content Include="Scripts\i18n\angular-locale_bg-bg.js" />
+    <Content Include="Scripts\i18n\angular-locale_bg.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm-latn-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_bm.js" />
+    <Content Include="Scripts\i18n\angular-locale_bn-bd.js" />
+    <Content Include="Scripts\i18n\angular-locale_bn-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_bn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bo-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bo-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_bo.js" />
+    <Content Include="Scripts\i18n\angular-locale_br-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_br.js" />
+    <Content Include="Scripts\i18n\angular-locale_brx-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_brx.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-cyrl-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-latn-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_bs.js" />
+    <Content Include="Scripts\i18n\angular-locale_byn-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_byn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-ad.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-es-valencia.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca-it.js" />
+    <Content Include="Scripts\i18n\angular-locale_ca.js" />
+    <Content Include="Scripts\i18n\angular-locale_cgg-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_cgg.js" />
+    <Content Include="Scripts\i18n\angular-locale_chr-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_chr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-arab-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-arab-ir.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-ir.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-latn-iq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ckb.js" />
+    <Content Include="Scripts\i18n\angular-locale_cs-cz.js" />
+    <Content Include="Scripts\i18n\angular-locale_cs.js" />
+    <Content Include="Scripts\i18n\angular-locale_cy-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_cy.js" />
+    <Content Include="Scripts\i18n\angular-locale_da-dk.js" />
+    <Content Include="Scripts\i18n\angular-locale_da-gl.js" />
+    <Content Include="Scripts\i18n\angular-locale_da.js" />
+    <Content Include="Scripts\i18n\angular-locale_dav-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_dav.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-at.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-li.js" />
+    <Content Include="Scripts\i18n\angular-locale_de-lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_de.js" />
+    <Content Include="Scripts\i18n\angular-locale_dje-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_dje.js" />
+    <Content Include="Scripts\i18n\angular-locale_dsb-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_dsb.js" />
+    <Content Include="Scripts\i18n\angular-locale_dua-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_dua.js" />
+    <Content Include="Scripts\i18n\angular-locale_dyo-sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_dyo.js" />
+    <Content Include="Scripts\i18n\angular-locale_dz-bt.js" />
+    <Content Include="Scripts\i18n\angular-locale_dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ebu-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_ebu.js" />
+    <Content Include="Scripts\i18n\angular-locale_ee-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ee-tg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ee.js" />
+    <Content Include="Scripts\i18n\angular-locale_el-cy.js" />
+    <Content Include="Scripts\i18n\angular-locale_el-gr.js" />
+    <Content Include="Scripts\i18n\angular-locale_el.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-150.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ag.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ai.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-as.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-au.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bb.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bs.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-bz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ca.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ck.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-cx.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-dm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-fj.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-fk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-fm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gd.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gi.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-gy.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ie.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-im.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-io.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-iso.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-je.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-jm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ki.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-kn.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ky.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-lc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-lr.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ls.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mh.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mp.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ms.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mt.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-mw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-my.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-na.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nf.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nr.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-nz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ph.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pn.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pr.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-pw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sb.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sd.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sh.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sl.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ss.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sx.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-sz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tk.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-to.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tt.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tv.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-um.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vc.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vg.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vi.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-vu.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-ws.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-zm.js" />
+    <Content Include="Scripts\i18n\angular-locale_en-zw.js" />
+    <Content Include="Scripts\i18n\angular-locale_en.js" />
+    <Content Include="Scripts\i18n\angular-locale_eo-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_eo.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-419.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ar.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-bo.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-cl.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-co.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-cr.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-cu.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-do.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ea.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ec.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-gq.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-gt.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-hn.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ic.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-mx.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ni.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-pa.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-pe.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ph.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-pr.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-py.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-sv.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-uy.js" />
+    <Content Include="Scripts\i18n\angular-locale_es-ve.js" />
+    <Content Include="Scripts\i18n\angular-locale_es.js" />
+    <Content Include="Scripts\i18n\angular-locale_et-ee.js" />
+    <Content Include="Scripts\i18n\angular-locale_et.js" />
+    <Content Include="Scripts\i18n\angular-locale_eu-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_eu.js" />
+    <Content Include="Scripts\i18n\angular-locale_ewo-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ewo.js" />
+    <Content Include="Scripts\i18n\angular-locale_fa-af.js" />
+    <Content Include="Scripts\i18n\angular-locale_fa-ir.js" />
+    <Content Include="Scripts\i18n\angular-locale_fa.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-gn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff-sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ff.js" />
+    <Content Include="Scripts\i18n\angular-locale_fi-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_fil-ph.js" />
+    <Content Include="Scripts\i18n\angular-locale_fil.js" />
+    <Content Include="Scripts\i18n\angular-locale_fo-fo.js" />
+    <Content Include="Scripts\i18n\angular-locale_fo.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bi.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bj.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-bl.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ca.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cg.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ci.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ga.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gn.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gp.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-gq.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ht.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-km.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mc.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mq.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-mu.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-nc.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-pf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-pm.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-re.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-sc.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-sy.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-td.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-tg.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-tn.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-vu.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-wf.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr-yt.js" />
+    <Content Include="Scripts\i18n\angular-locale_fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_fur-it.js" />
+    <Content Include="Scripts\i18n\angular-locale_fur.js" />
+    <Content Include="Scripts\i18n\angular-locale_fy-nl.js" />
+    <Content Include="Scripts\i18n\angular-locale_fy.js" />
+    <Content Include="Scripts\i18n\angular-locale_ga-ie.js" />
+    <Content Include="Scripts\i18n\angular-locale_ga.js" />
+    <Content Include="Scripts\i18n\angular-locale_gd-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_gd.js" />
+    <Content Include="Scripts\i18n\angular-locale_gl-es.js" />
+    <Content Include="Scripts\i18n\angular-locale_gl.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw-li.js" />
+    <Content Include="Scripts\i18n\angular-locale_gsw.js" />
+    <Content Include="Scripts\i18n\angular-locale_gu-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_gu.js" />
+    <Content Include="Scripts\i18n\angular-locale_guz-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_guz.js" />
+    <Content Include="Scripts\i18n\angular-locale_gv-im.js" />
+    <Content Include="Scripts\i18n\angular-locale_gv.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn-gh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ha.js" />
+    <Content Include="Scripts\i18n\angular-locale_haw-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_haw.js" />
+    <Content Include="Scripts\i18n\angular-locale_he-il.js" />
+    <Content Include="Scripts\i18n\angular-locale_he.js" />
+    <Content Include="Scripts\i18n\angular-locale_hi-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_hi.js" />
+    <Content Include="Scripts\i18n\angular-locale_hr-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_hr-hr.js" />
+    <Content Include="Scripts\i18n\angular-locale_hr.js" />
+    <Content Include="Scripts\i18n\angular-locale_hsb-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_hsb.js" />
+    <Content Include="Scripts\i18n\angular-locale_hu-hu.js" />
+    <Content Include="Scripts\i18n\angular-locale_hu.js" />
+    <Content Include="Scripts\i18n\angular-locale_hy-am.js" />
+    <Content Include="Scripts\i18n\angular-locale_hy.js" />
+    <Content Include="Scripts\i18n\angular-locale_ia-fr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ia.js" />
+    <Content Include="Scripts\i18n\angular-locale_id-id.js" />
+    <Content Include="Scripts\i18n\angular-locale_id.js" />
+    <Content Include="Scripts\i18n\angular-locale_ig-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_ig.js" />
+    <Content Include="Scripts\i18n\angular-locale_ii-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ii.js" />
+    <Content Include="Scripts\i18n\angular-locale_in.js" />
+    <Content Include="Scripts\i18n\angular-locale_is-is.js" />
+    <Content Include="Scripts\i18n\angular-locale_is.js" />
+    <Content Include="Scripts\i18n\angular-locale_it-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_it-it.js" />
+    <Content Include="Scripts\i18n\angular-locale_it-sm.js" />
+    <Content Include="Scripts\i18n\angular-locale_it.js" />
+    <Content Include="Scripts\i18n\angular-locale_iw.js" />
+    <Content Include="Scripts\i18n\angular-locale_ja-jp.js" />
+    <Content Include="Scripts\i18n\angular-locale_ja.js" />
+    <Content Include="Scripts\i18n\angular-locale_jgo-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_jgo.js" />
+    <Content Include="Scripts\i18n\angular-locale_jmc-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_jmc.js" />
+    <Content Include="Scripts\i18n\angular-locale_ka-ge.js" />
+    <Content Include="Scripts\i18n\angular-locale_ka.js" />
+    <Content Include="Scripts\i18n\angular-locale_kab-dz.js" />
+    <Content Include="Scripts\i18n\angular-locale_kab.js" />
+    <Content Include="Scripts\i18n\angular-locale_kam-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_kam.js" />
+    <Content Include="Scripts\i18n\angular-locale_kde-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_kde.js" />
+    <Content Include="Scripts\i18n\angular-locale_kea-cv.js" />
+    <Content Include="Scripts\i18n\angular-locale_kea.js" />
+    <Content Include="Scripts\i18n\angular-locale_khq-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_khq.js" />
+    <Content Include="Scripts\i18n\angular-locale_ki-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_ki.js" />
+    <Content Include="Scripts\i18n\angular-locale_kk-cyrl-kz.js" />
+    <Content Include="Scripts\i18n\angular-locale_kk-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_kk.js" />
+    <Content Include="Scripts\i18n\angular-locale_kkj-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_kkj.js" />
+    <Content Include="Scripts\i18n\angular-locale_kl-gl.js" />
+    <Content Include="Scripts\i18n\angular-locale_kl.js" />
+    <Content Include="Scripts\i18n\angular-locale_kln-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_kln.js" />
+    <Content Include="Scripts\i18n\angular-locale_km-kh.js" />
+    <Content Include="Scripts\i18n\angular-locale_km.js" />
+    <Content Include="Scripts\i18n\angular-locale_kn-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_kn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ko-kp.js" />
+    <Content Include="Scripts\i18n\angular-locale_ko-kr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ko.js" />
+    <Content Include="Scripts\i18n\angular-locale_kok-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_kok.js" />
+    <Content Include="Scripts\i18n\angular-locale_ks-arab-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ks-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_ks.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksb-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksb.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksf-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksf.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksh-de.js" />
+    <Content Include="Scripts\i18n\angular-locale_ksh.js" />
+    <Content Include="Scripts\i18n\angular-locale_kw-gb.js" />
+    <Content Include="Scripts\i18n\angular-locale_kw.js" />
+    <Content Include="Scripts\i18n\angular-locale_ky-cyrl-kg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ky-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_ky.js" />
+    <Content Include="Scripts\i18n\angular-locale_lag-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_lag.js" />
+    <Content Include="Scripts\i18n\angular-locale_lb-lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_lb.js" />
+    <Content Include="Scripts\i18n\angular-locale_lg-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_lg.js" />
+    <Content Include="Scripts\i18n\angular-locale_lkt-us.js" />
+    <Content Include="Scripts\i18n\angular-locale_lkt.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-ao.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-cf.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln-cg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ln.js" />
+    <Content Include="Scripts\i18n\angular-locale_lo-la.js" />
+    <Content Include="Scripts\i18n\angular-locale_lo.js" />
+    <Content Include="Scripts\i18n\angular-locale_lt-lt.js" />
+    <Content Include="Scripts\i18n\angular-locale_lt.js" />
+    <Content Include="Scripts\i18n\angular-locale_lu-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_lu.js" />
+    <Content Include="Scripts\i18n\angular-locale_luo-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_luo.js" />
+    <Content Include="Scripts\i18n\angular-locale_luy-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_luy.js" />
+    <Content Include="Scripts\i18n\angular-locale_lv-lv.js" />
+    <Content Include="Scripts\i18n\angular-locale_lv.js" />
+    <Content Include="Scripts\i18n\angular-locale_mas-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_mas-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_mas.js" />
+    <Content Include="Scripts\i18n\angular-locale_mer-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_mer.js" />
+    <Content Include="Scripts\i18n\angular-locale_mfe-mu.js" />
+    <Content Include="Scripts\i18n\angular-locale_mfe.js" />
+    <Content Include="Scripts\i18n\angular-locale_mg-mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_mg.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgh-mz.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgh.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgo-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_mgo.js" />
+    <Content Include="Scripts\i18n\angular-locale_mk-mk.js" />
+    <Content Include="Scripts\i18n\angular-locale_mk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ml-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_mn-cyrl-mn.js" />
+    <Content Include="Scripts\i18n\angular-locale_mn-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_mn.js" />
+    <Content Include="Scripts\i18n\angular-locale_mr-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_mr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn-bn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn-my.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ms.js" />
+    <Content Include="Scripts\i18n\angular-locale_mt-mt.js" />
+    <Content Include="Scripts\i18n\angular-locale_mt.js" />
+    <Content Include="Scripts\i18n\angular-locale_mua-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_mua.js" />
+    <Content Include="Scripts\i18n\angular-locale_my-mm.js" />
+    <Content Include="Scripts\i18n\angular-locale_my.js" />
+    <Content Include="Scripts\i18n\angular-locale_naq-na.js" />
+    <Content Include="Scripts\i18n\angular-locale_naq.js" />
+    <Content Include="Scripts\i18n\angular-locale_nb-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_nb-sj.js" />
+    <Content Include="Scripts\i18n\angular-locale_nb.js" />
+    <Content Include="Scripts\i18n\angular-locale_nd-zw.js" />
+    <Content Include="Scripts\i18n\angular-locale_nd.js" />
+    <Content Include="Scripts\i18n\angular-locale_ne-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ne-np.js" />
+    <Content Include="Scripts\i18n\angular-locale_ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-aw.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-be.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-bq.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-cw.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-nl.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-sr.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl-sx.js" />
+    <Content Include="Scripts\i18n\angular-locale_nl.js" />
+    <Content Include="Scripts\i18n\angular-locale_nmg-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_nmg.js" />
+    <Content Include="Scripts\i18n\angular-locale_nn-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_nn.js" />
+    <Content Include="Scripts\i18n\angular-locale_nnh-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_nnh.js" />
+    <Content Include="Scripts\i18n\angular-locale_no-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_no.js" />
+    <Content Include="Scripts\i18n\angular-locale_nr-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_nr.js" />
+    <Content Include="Scripts\i18n\angular-locale_nso-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_nso.js" />
+    <Content Include="Scripts\i18n\angular-locale_nus-sd.js" />
+    <Content Include="Scripts\i18n\angular-locale_nus.js" />
+    <Content Include="Scripts\i18n\angular-locale_nyn-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_nyn.js" />
+    <Content Include="Scripts\i18n\angular-locale_om-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_om-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_om.js" />
+    <Content Include="Scripts\i18n\angular-locale_or-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_or.js" />
+    <Content Include="Scripts\i18n\angular-locale_os-ge.js" />
+    <Content Include="Scripts\i18n\angular-locale_os-ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_os.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-arab-pk.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-guru-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa-guru.js" />
+    <Content Include="Scripts\i18n\angular-locale_pa.js" />
+    <Content Include="Scripts\i18n\angular-locale_pl-pl.js" />
+    <Content Include="Scripts\i18n\angular-locale_pl.js" />
+    <Content Include="Scripts\i18n\angular-locale_ps-af.js" />
+    <Content Include="Scripts\i18n\angular-locale_ps.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-ao.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-br.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-cv.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-gw.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-mz.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-pt.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-st.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt-tl.js" />
+    <Content Include="Scripts\i18n\angular-locale_pt.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu-bo.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu-ec.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu-pe.js" />
+    <Content Include="Scripts\i18n\angular-locale_qu.js" />
+    <Content Include="Scripts\i18n\angular-locale_rm-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_rm.js" />
+    <Content Include="Scripts\i18n\angular-locale_rn-bi.js" />
+    <Content Include="Scripts\i18n\angular-locale_rn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ro-md.js" />
+    <Content Include="Scripts\i18n\angular-locale_ro-ro.js" />
+    <Content Include="Scripts\i18n\angular-locale_ro.js" />
+    <Content Include="Scripts\i18n\angular-locale_rof-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_rof.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-by.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-kg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-kz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-md.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru-ua.js" />
+    <Content Include="Scripts\i18n\angular-locale_ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_rw-rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_rw.js" />
+    <Content Include="Scripts\i18n\angular-locale_rwk-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_rwk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sah-ru.js" />
+    <Content Include="Scripts\i18n\angular-locale_sah.js" />
+    <Content Include="Scripts\i18n\angular-locale_saq-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_saq.js" />
+    <Content Include="Scripts\i18n\angular-locale_sbp-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_sbp.js" />
+    <Content Include="Scripts\i18n\angular-locale_se-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_se-no.js" />
+    <Content Include="Scripts\i18n\angular-locale_se-se.js" />
+    <Content Include="Scripts\i18n\angular-locale_se.js" />
+    <Content Include="Scripts\i18n\angular-locale_seh-mz.js" />
+    <Content Include="Scripts\i18n\angular-locale_seh.js" />
+    <Content Include="Scripts\i18n\angular-locale_ses-ml.js" />
+    <Content Include="Scripts\i18n\angular-locale_ses.js" />
+    <Content Include="Scripts\i18n\angular-locale_sg-cf.js" />
+    <Content Include="Scripts\i18n\angular-locale_sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-latn-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-tfng-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi-tfng.js" />
+    <Content Include="Scripts\i18n\angular-locale_shi.js" />
+    <Content Include="Scripts\i18n\angular-locale_si-lk.js" />
+    <Content Include="Scripts\i18n\angular-locale_si.js" />
+    <Content Include="Scripts\i18n\angular-locale_sk-sk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sl-si.js" />
+    <Content Include="Scripts\i18n\angular-locale_sl.js" />
+    <Content Include="Scripts\i18n\angular-locale_smn-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_smn.js" />
+    <Content Include="Scripts\i18n\angular-locale_sn-zw.js" />
+    <Content Include="Scripts\i18n\angular-locale_sn.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-dj.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_so-so.js" />
+    <Content Include="Scripts\i18n\angular-locale_so.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq-al.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq-mk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq-xk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sq.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-me.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-rs.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl-xk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-ba.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-me.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-rs.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn-xk.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_sr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ss-sz.js" />
+    <Content Include="Scripts\i18n\angular-locale_ss-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_ss.js" />
+    <Content Include="Scripts\i18n\angular-locale_ssy-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_ssy.js" />
+    <Content Include="Scripts\i18n\angular-locale_st-ls.js" />
+    <Content Include="Scripts\i18n\angular-locale_st-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_st.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv-ax.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv-fi.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv-se.js" />
+    <Content Include="Scripts\i18n\angular-locale_sv.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_sw.js" />
+    <Content Include="Scripts\i18n\angular-locale_swc-cd.js" />
+    <Content Include="Scripts\i18n\angular-locale_swc.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-lk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-my.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_ta.js" />
+    <Content Include="Scripts\i18n\angular-locale_te-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_te.js" />
+    <Content Include="Scripts\i18n\angular-locale_teo-ke.js" />
+    <Content Include="Scripts\i18n\angular-locale_teo-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_teo.js" />
+    <Content Include="Scripts\i18n\angular-locale_tg-cyrl-tj.js" />
+    <Content Include="Scripts\i18n\angular-locale_tg-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_tg.js" />
+    <Content Include="Scripts\i18n\angular-locale_th-th.js" />
+    <Content Include="Scripts\i18n\angular-locale_th.js" />
+    <Content Include="Scripts\i18n\angular-locale_ti-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_ti-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_ti.js" />
+    <Content Include="Scripts\i18n\angular-locale_tig-er.js" />
+    <Content Include="Scripts\i18n\angular-locale_tig.js" />
+    <Content Include="Scripts\i18n\angular-locale_tl.js" />
+    <Content Include="Scripts\i18n\angular-locale_tn-bw.js" />
+    <Content Include="Scripts\i18n\angular-locale_tn-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_tn.js" />
+    <Content Include="Scripts\i18n\angular-locale_to-to.js" />
+    <Content Include="Scripts\i18n\angular-locale_to.js" />
+    <Content Include="Scripts\i18n\angular-locale_tr-cy.js" />
+    <Content Include="Scripts\i18n\angular-locale_tr-tr.js" />
+    <Content Include="Scripts\i18n\angular-locale_tr.js" />
+    <Content Include="Scripts\i18n\angular-locale_ts-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_ts.js" />
+    <Content Include="Scripts\i18n\angular-locale_twq-ne.js" />
+    <Content Include="Scripts\i18n\angular-locale_twq.js" />
+    <Content Include="Scripts\i18n\angular-locale_tzm-latn-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_tzm-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_tzm.js" />
+    <Content Include="Scripts\i18n\angular-locale_ug-arab-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_ug-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_uk-ua.js" />
+    <Content Include="Scripts\i18n\angular-locale_uk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ur-in.js" />
+    <Content Include="Scripts\i18n\angular-locale_ur-pk.js" />
+    <Content Include="Scripts\i18n\angular-locale_ur.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-arab-af.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-arab.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-cyrl-uz.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-cyrl.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-latn-uz.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_uz.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-latn-lr.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-latn.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-vaii-lr.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai-vaii.js" />
+    <Content Include="Scripts\i18n\angular-locale_vai.js" />
+    <Content Include="Scripts\i18n\angular-locale_ve-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_ve.js" />
+    <Content Include="Scripts\i18n\angular-locale_vi-vn.js" />
+    <Content Include="Scripts\i18n\angular-locale_vi.js" />
+    <Content Include="Scripts\i18n\angular-locale_vo-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_vo.js" />
+    <Content Include="Scripts\i18n\angular-locale_vun-tz.js" />
+    <Content Include="Scripts\i18n\angular-locale_vun.js" />
+    <Content Include="Scripts\i18n\angular-locale_wae-ch.js" />
+    <Content Include="Scripts\i18n\angular-locale_wae.js" />
+    <Content Include="Scripts\i18n\angular-locale_wal-et.js" />
+    <Content Include="Scripts\i18n\angular-locale_wal.js" />
+    <Content Include="Scripts\i18n\angular-locale_xh-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_xh.js" />
+    <Content Include="Scripts\i18n\angular-locale_xog-ug.js" />
+    <Content Include="Scripts\i18n\angular-locale_xog.js" />
+    <Content Include="Scripts\i18n\angular-locale_yav-cm.js" />
+    <Content Include="Scripts\i18n\angular-locale_yav.js" />
+    <Content Include="Scripts\i18n\angular-locale_yi-001.js" />
+    <Content Include="Scripts\i18n\angular-locale_yi.js" />
+    <Content Include="Scripts\i18n\angular-locale_yo-bj.js" />
+    <Content Include="Scripts\i18n\angular-locale_yo-ng.js" />
+    <Content Include="Scripts\i18n\angular-locale_yo.js" />
+    <Content Include="Scripts\i18n\angular-locale_zgh-ma.js" />
+    <Content Include="Scripts\i18n\angular-locale_zgh.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-cn.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans-sg.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hans.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant-mo.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant-tw.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hant.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-hk.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh-tw.js" />
+    <Content Include="Scripts\i18n\angular-locale_zh.js" />
+    <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
+    <Content Include="Scripts\i18n\angular-locale_zu.js" />
+    <Content Include="ckfinder\plugins\fileeditor\codemirror\LICENSE" />
+    <Content Include="ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Client\Views\web.config" />
+    <Content Include="Areas\Client\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_ContentLeft.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_ContentRight.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_Slider.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\Content.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\Contact.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\About.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\Login.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\Register.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_LayoutNotSlider.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_LayoutNotSliderForProduct.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\ProductByCategory.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\ContentByCategoryContent.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\ContentDetail.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\ProductDetail.cshtml" />
+    <Content Include="Areas\Client\Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Areas\Client\Views\HomeClient\FindNameProduct.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_FindProductName.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.easing.1.3.js" />
+    <Content Include="Scripts\jquery.easing.1.3.min.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.sticky.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo.all.min.js" />
+    <Content Include="Scripts\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\kendo.culture.en-US.min.js" />
+    <Content Include="Scripts\kendo.modernizr.custom.js" />
+    <Content Include="Scripts\kendo.timezones.min.js" />
+    <Content Include="Scripts\kendo.upload.min.js" />
+    <Content Include="Scripts\kendo\2017\jquery.min.js" />
+    <Content Include="Scripts\kendo\2017\kendo.all.min.js" />
+    <Content Include="Scripts\a\a.js" />
+    <Content Include="Scripts\loading.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\mustache.js" />
+    <Content Include="Scripts\MvcFoolproofValidation.min.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\numeral\numeral.js" />
+    <Content Include="Scripts\numeral\numeral.min.js" />
+    <Content Include="Scripts\plugins\bootbox.js" />
+    <Content Include="Scripts\plugins\bootbox.min.js" />
+    <Content Include="Scripts\plugins\ngTagsInput\ng-tags-input.bootstrap.css" />
+    <Content Include="Scripts\plugins\ngTagsInput\ng-tags-input.css" />
+    <Content Include="Scripts\plugins\ngTagsInput\ng-tags-input.js" />
+    <Content Include="Scripts\plugins\ngTagsInput\ng-tags-input.min.css" />
+    <Content Include="Scripts\plugins\ngTagsInput\ng-tags-input.min.js" />
+    <Content Include="Scripts\plugins\remodal-1.1\remodal-default-theme.css" />
+    <Content Include="Scripts\plugins\remodal-1.1\remodal.css" />
+    <Content Include="Scripts\plugins\remodal-1.1\remodal.js" />
+    <Content Include="Scripts\plugins\section-bar.js" />
+    <Content Include="Scripts\plugins\select.js" />
+    <Content Include="Scripts\plugins\select2.min.js" />
+    <Content Include="Scripts\prettify.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.1.4.2.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="UploadFiles\files\iphone-7-plus-silver_3_2_1_1.jpg" />
+    <Content Include="UploadFiles\files\iphone6splus8003001602.jpg" />
+    <Content Include="UploadFiles\files\kpmg-reception-e1461747802213.jpg" />
+    <Content Include="UploadFiles\files\Sliding_Huawei_0103.jpg" />
+    <Content Include="UploadFiles\files\Sliding_S10_OFF_0103_1440.jpg" />
+    <Content Include="UploadFiles\_thumbs\Files\Dowload-hinh-nen-cua-Macbook-Mac-macOS-9.jpg" />
+    <Content Include="UploadFiles\_thumbs\Files\hinh-nen-26.jpg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contents\Index.cshtml" />
+    <Content Include="Views\FeedBack\Index.cshtml" />
+    <Content Include="Views\Footer\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Producer\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Slide\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\UserGroup\Index.cshtml" />
+    <Content Include="Views\CategoryContent\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Client\Models\" />
+    <Folder Include="UploadFiles\flash\" />
+    <Folder Include="UploadFiles\images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\animated.less" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\Images\kendoui.ttf" />
+    <Content Include="Content\Images\kendoui.woff" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSans-Bold.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSans-BoldOblique.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSans-ExtraLight.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSans-Oblique.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSans.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSansMono-Bold.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSansMono-BoldOblique.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSansMono-Oblique.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSansMono.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSerif-Bold.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSerif-BoldItalic.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSerif-Italic.ttf" />
+    <Content Include="Content\kendo\2017\fonts\DejaVu\DejaVuSerif.ttf" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\KendoUIGlyphs.eot" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\KendoUIGlyphs.ttf" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\KendoUIGlyphs.woff" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\WebComponentsIcons.eot" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\WebComponentsIcons.ttf" />
+    <Content Include="Content\kendo\2017\fonts\glyphs\WebComponentsIcons.woff" />
+    <Content Include="Content\kendo\2017\images\kendoui.ttf" />
+    <Content Include="Content\kendo\2017\images\kendoui.woff" />
+    <Content Include="Content\kendo\2017\kendo.material.min.css.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-message-format.min.js.map" />
+    <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-parse-ext.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\GUID.js.map" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Scripts\version.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.Business\OnlineShop.Business.csproj">
+      <Project>{f8bd68a0-2d4e-49de-9d30-682ac53548e2}</Project>
+      <Name>OnlineShop.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Common\OnlineShop.Common.csproj">
+      <Project>{3d269c6b-cdab-4645-8dae-a5f98307b99c}</Project>
+      <Name>OnlineShop.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Data\OnlineShop.Data.csproj">
+      <Project>{b77ffa04-868d-42b4-8688-e8f091270ada}</Project>
+      <Name>OnlineShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineShop.Entities\OnlineShop.Entities.csproj">
+      <Project>{f757275e-f8b9-4a9b-a50d-8bc579acda50}</Project>
+      <Name>OnlineShop.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54335</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54335/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.9.1\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.9.1\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.9.1\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.9.1\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

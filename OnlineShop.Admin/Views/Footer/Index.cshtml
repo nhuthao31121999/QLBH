@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Chân trang";
+    ViewBag.SubMenu = "Danh Mục Thông Tin";
+}
+
+<link href="@Url.Content("~/Content/Footer.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/footerController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/footerModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/footerService.js")"></script>
+
+@using (Ajax.BeginForm("Index", "Footer", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "footerValid", @id = "footerValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="footerController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="FooterTable"
+                     k-options="FooterSection"
+                     k-on-save="FooterListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownFooter" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                <ul>
+                    <li ng-show="showErrorMsg(footerValid.Name)">Tên Chân Trang Không Được Để Trống</li>
+                    <li ng-show="CheckDuplicate">Tên Nội Dung Đã Tồn Tại</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="col-sm-2">
+                        <label>Nội Dung</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-10">
+                        <textarea class="form-control"
+                                  name="Content"
+                                  id="Content"
+                                  rows="8"
+                                  ng-model="footer.Content"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="col-sm-3">
+                        <label>Tên Nội Dung</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Name"
+                               id="Name"
+                               style="margin-bottom: 15px;"
+                               ng-model="footer.Name"
+                               maxlength="500"
+                               ng-class="{'has-error': showErrorMsg(footerValid.Name) || CheckDuplicate}"
+                               required />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Trạng Thái</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox"
+                               id="TrangThai"
+                               ng-model="footer.Status"
+                               name="TrangThai"
+                               class="k-checkbox" />
+                        <label class="k-checkbox-label" for="TrangThai">Kích Hoạt</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="footer.FooterID > 0">
+                <div class="col-sm-7">
+                    <div class="col-sm-2">
+                        <label>Người Tạo:</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label ng-bind="footer.CreatedByName"></label>
+                        <input type="hidden" id="CreatedByName" name="CreatedByName" ng-model="footer.CreatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="footer.CreatedDate"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="footer.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="footer.FooterID > 0">
+                <div class="col-sm-7">
+                    <div class="col-sm-2">
+                        <label>Người Sửa:</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label ng-bind="footer.LastUpdatedByName"></label>
+                        <input type="hidden" id="LastUpdatedByName" name="LastUpdatedByName" ng-model="footer.LastUpdatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="col-sm-3">
+                        <label>Ngày Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="footer.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="footer.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnSave"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnSave"
+                            ng-disabled="DisabledBtnSave"
+                            ng-click="save(footerValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> LƯU
+                    </button>
+
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnUpdate"
+                            ng-disabled="DisabledBtnUpdate"
+                            ng-click="update(footerValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> CẬP NHẬT
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger k-grid-delete float-right btn-swidth mr-10"
+                            ng-click="close()">
+                        <i class="fa fa-times" aria-hidden="true"></i> ĐÓNG
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Tin Tức";
+    Layout = "~/Areas/Client/Views/Shared/_LayoutNotSlider.cshtml";
+}
+
+<div class="content-bottom-right">
+    <h3>Tin Tức</h3>
+    <div class="section group">
+        <div class="grid_1_of_4 images_1_of_4" ng-repeat="content in BindDataForClientContentPage">
+            <a href="/Client/HomeClient/ContentDetail?id={{content.ContentID}}"><img ng-src="{{content.Image}}" alt="" style="width:120px; height:120px;" /></a>
+            <h4><a href="/Client/HomeClient/ContentDetail?id={{content.ContentID}}" style="padding-bottom: 5px; color: #e44f2b; font-size: 13px; text-align: justify; letter-spacing: -0.02em; padding-top: 5px;">{{content.Title}}</a></h4>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Phản hồi";
+}
+
+<link href="@Url.Content("~/Content/FeedBack.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/feedBackController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/feedBackModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/feedBackService.js")"></script>
+
+@using (Ajax.BeginForm("Index", "FeedBack", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "feedbackValid", @id = "feedbackValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="feedBackController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="FeedBackTable"
+                     k-options="FeedBackSection"
+                     k-on-save="FeedBackListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownFeedBack" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Họ Và Tên</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Name"
+                               id="Name"
+                               ng-model="feedback.Name"
+                               ng-disabled="true" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Điện Thoại</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Phone"
+                               id="Phone"
+                               ng-model="feedback.Phone"
+                               ng-disabled="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Địa Chỉ</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Address"
+                               id="Address"
+                               ng-model="feedback.Address"
+                               ng-disabled="true" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Email</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Email"
+                               id="Email"
+                               ng-model="feedback.Email"
+                               ng-disabled="true" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="customDivision">
+                    <div class="smallDivision">
+                        <label>Nội Dung</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="largeDivision">
+                        <textarea class="form-control"
+                                  name="Content"
+                                  id="Content"
+                                  rows="6"
+                                  ng-model="feedback.Content"
+                                  ng-disabled="true"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="feedback.FeedBackID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="feedback.CreatedDate"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="feedback.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Xem:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="feedback.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="feedback.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnUpdate"
+                            ng-disabled="DisabledBtnUpdate"
+                            ng-click="update(feedbackValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> XONG
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

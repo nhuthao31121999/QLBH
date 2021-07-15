@@ -1,0 +1,7 @@
+C:\Users\Admin\Downloads\onlineshophanoiuniversityofminingandgeology\02.Source\OnlineShop\OnlineShop.Entities\bin\Debug\OnlineShop.Entities.dll
+C:\Users\Admin\Downloads\onlineshophanoiuniversityofminingandgeology\02.Source\OnlineShop\OnlineShop.Entities\bin\Debug\OnlineShop.Entities.pdb
+C:\Users\Admin\Downloads\onlineshophanoiuniversityofminingandgeology\02.Source\OnlineShop\OnlineShop.Entities\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Admin\Downloads\onlineshophanoiuniversityofminingandgeology\02.Source\OnlineShop\OnlineShop.Entities\obj\Debug\OnlineShop.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Downloads\onlineshophanoiuniversityofminingandgeology\02.Source\OnlineShop\OnlineShop.Entities\obj\Debug\OnlineShop.Entities.csproj.CopyComplete
+C:\Users\Admin\Downloads\onlineshophanoiuniversityofminingandgeology\02.Source\OnlineShop\OnlineShop.Entities\obj\Debug\OnlineShop.Entities.dll
+C:\Users\Admin\Downloads\onlineshophanoiuniversityofminingandgeology\02.Source\OnlineShop\OnlineShop.Entities\obj\Debug\OnlineShop.Entities.pdb

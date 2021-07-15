@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "Danh Mục Loại Tin Tức";
+    ViewBag.SubMenu = "Danh Mục Thông Tin";
+}
+
+<link href="@Url.Content("~/Content/CategoryContent.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/categoryContentController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/categoryContentModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/categoryContentService.js")"></script>
+
+@using (Ajax.BeginForm("Index", "CategoryContent", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "categoryContentValid", @id = "categoryContentValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="categoryContentController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="CategoryContentTable"
+                     k-options="CategoryContentSection"
+                     k-on-save="CategoryContentListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownCategoryContent" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                <ul>
+                    <li ng-show="showErrorMsg(categoryContentValid.Name)">Tên Danh Mục Loại Tin Tức Không Được Để Trống</li>
+                    <li ng-show="CheckDuplicate">Tên Danh Mục Đã Tồn Tại</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Tên Danh Mục</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Name"
+                               id="Name"
+                               ng-model="categorycontent.Name"
+                               maxlength="500"
+                               ng-class="{'has-error': showErrorMsg(categoryContentValid.Name) || CheckDuplicate}"
+                               required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Danh Mục Cha</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <select kendo-multi-column-combo-box
+                                id="ParentId"
+                                name="ParentId"
+                                ng-model="categorycontent.ParentId"
+                                k-data-source="ParentDropdownlist"
+                                k-data-text-field="'Name'"
+                                k-data-value-field="'CategoryContentID'"
+                                k-columns="[
+                                            { field: 'CategoryContentID', title: 'Mã Danh Mục', width: 200},
+                                            { field: 'Name', title: 'Tên Danh Mục', width: 200}
+                                           ]"
+                                k-filter="'contains'"
+                                k-auto-bind="false"
+                                class="ParentId"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Thứ Tự Hiển Thị</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="DisplayOrder"
+                               id="DisplayOrder"
+                               ng-model="categorycontent.DisplayOrder" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Trạng Thái</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox"
+                               id="TrangThai"
+                               ng-model="categorycontent.Status"
+                               name="TrangThai"
+                               class="k-checkbox" />
+                        <label class="k-checkbox-label" for="TrangThai">Kích Hoạt</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="categorycontent.CategoryContentID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="categorycontent.CreatedByName"></label>
+                        <input type="hidden" id="CreatedByName" name="CreatedByName" ng-model="categorycontent.CreatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="categorycontent.CreatedDate"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="categorycontent.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="categorycontent.CategoryContentID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="categorycontent.LastUpdatedByName"></label>
+                        <input type="hidden" id="LastUpdatedByName" name="LastUpdatedByName" ng-model="categorycontent.LastUpdatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="categorycontent.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="categorycontent.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnSave"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnSave"
+                            ng-disabled="DisabledBtnSave"
+                            ng-click="save(categoryContentValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> LƯU
+                    </button>
+
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnUpdate"
+                            ng-disabled="DisabledBtnUpdate"
+                            ng-click="update(categoryContentValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> CẬP NHẬT
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger k-grid-delete float-right btn-swidth mr-10"
+                            ng-click="close()">
+                        <i class="fa fa-times" aria-hidden="true"></i> ĐÓNG
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

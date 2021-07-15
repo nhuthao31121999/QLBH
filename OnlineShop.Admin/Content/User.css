@@ -1,0 +1,92 @@
+﻿#UserTable td {
+    font-size: 13px;
+}
+
+#UserTable .k-grid-header table {
+    min-width: 1100px;
+}
+
+#UserTable .k-grid-header table, .k-grid-content table, .k-grid-footer table, .k-grid-content-locked > table {
+    table-layout: fixed;
+    min-width: 1100px;
+}
+
+#UserTable .k-header {
+    -webkit-box-sizing: content-box;
+    box-sizing: inherit !important;
+}
+
+#UserTable .k-grid-content tbody tr td .k-grid-checkvalidate {
+    position: relative;
+    height: 50px;
+    background-color: gray;
+    border-color: gray;
+}
+
+    #UserTable .k-grid-content tbody tr td .k-grid-checkvalidate > span {
+        position: absolute;
+        left: 7px;
+        top: 7px;
+        color: white;
+    }
+
+#KenWindownUser .validationMessageTemplate {
+    display: none;
+}
+
+.fa-exclamation-triangle:hover .validationMessageTemplate {
+    display: inline;
+}
+
+.k-state-default.k-picker-wrap > .k-select {
+    margin-bottom: 0px;
+    min-height: initial;
+    height: auto;
+}
+
+/*div.k-window-content {
+    overflow: visible;
+    float: left;
+    display: none;
+}*/
+
+.popupUser {
+    left: 7.5% !important;
+}
+
+    .popupUser label {
+        padding-top: 6px;
+    }
+
+div.customDivision {
+    display: flex;
+}
+
+div.smallDivision {
+    width: 12.3337%;
+    margin-left: 15px;
+}
+
+div.largeDivision {
+    width: 87.6663%;
+    padding-right: 18px;
+    padding-left: 3px;
+}
+
+.ScrollStyle {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.UserGroupID {
+    width: 100%;
+    height: 35px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}

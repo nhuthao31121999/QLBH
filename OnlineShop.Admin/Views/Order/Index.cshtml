@@ -1,0 +1,194 @@
+﻿@{
+    ViewBag.Title = "Đơn Hàng";
+}
+
+<link href="@Url.Content("~/Content/Order.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/orderController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/orderModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/orderDetailModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/orderService.js")"></script>
+<style>
+    .order {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 17px;
+        font-weight: normal;
+        line-height: 1.428571429;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        user-select: none;
+        color: #ffffff;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+    }
+</style>
+@using (Ajax.BeginForm("Index", "Order", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "orderValid", @id = "orderValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="orderController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="OrderTable"
+                     k-options="OrderSection"
+                     k-on-save="OrderListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownOrder" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <label>Mã Đơn Hàng</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-8">
+                        <label ng-bind="order.OrderID" style="color: #3F51B5;"></label>
+                        <input type="hidden" id="OrderID" name="OrderID" ng-model="order.OrderID" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Họ Và Tên</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="order.OrderName" style="color: #3F51B5;"></label>
+                        <input type="hidden" id="OrderName" name="OrderName" ng-model="order.OrderName" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <label>Số Điện Thoại</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-8">
+                        <label ng-bind="order.OrderMobile" style="color: #3F51B5;"></label>
+                        <input type="hidden" id="OrderMobile" name="OrderMobile" ng-model="order.OrderMobile" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Địa Chỉ</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="order.OrderAdress" style="color: #3F51B5;"></label>
+                        <input type="hidden" id="OrderAdress" name="OrderAdress" ng-model="order.OrderAdress" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <label>Email</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-8">
+                        <label ng-bind="order.OrderEmail" style="color: #3F51B5;"></label>
+                        <input type="hidden" id="OrderEmail" name="OrderEmail" ng-model="order.OrderEmail" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo Đơn</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="order.CreatedDate" style="color: #3F51B5;"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="order.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <label>Hình Thức Thanh Toán</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-8">
+                        <label ng-bind="order.PaymentMethod" style="color: #3F51B5;"></label>
+                        <input type="hidden" id="PaymentMethod" name="PaymentMethod" ng-model="order.PaymentMethod" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Trạng Thái Đơn</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <select kendo-drop-down-list
+                                id="Status"
+                                name="Status"
+                                ng-model="order.Status"
+                                k-data-source="StatusDropdownlist"
+                                k-data-text-field="'Name'"
+                                k-data-value-field="'Id'"
+                                class="Status"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div kendo-grid
+                         id="OrderDetailTable"
+                         k-options="OrderDetailSection">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-12" style="text-align:right;">
+                        <span class="order">Tổng số tiền đơn hàng: &nbsp;{{TotalOrderDetailList.Total | number : 0}}<sup>vnđ</sup></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <label>Người Sửa:</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label ng-bind="order.LastUpdatedByName"></label>
+                        <input type="hidden" id="LastUpdatedByName" name="LastUpdatedByName" ng-model="order.LastUpdatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="order.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="order.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-click="update()">
+                        <i class="fa fa-save " aria-hidden="true"></i> CẬP NHẬT
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger k-grid-delete float-right btn-swidth mr-10"
+                            ng-click="close()">
+                        <i class="fa fa-times" aria-hidden="true"></i> ĐÓNG
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

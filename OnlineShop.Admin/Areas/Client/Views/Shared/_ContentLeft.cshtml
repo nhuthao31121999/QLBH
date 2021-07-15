@@ -1,0 +1,30 @@
+﻿<div class="content-bottom-left">
+    <div class="categories">
+        <h3>Danh Mục Sản Phẩm</h3>
+        <ul>
+            <li ng-repeat="category in BindCategoryForClientHomePage"><a href="/Client/HomeClient/ProductByCategory?id={{category.CategoryID}}">{{category.Name}} </a></li>
+        </ul>
+    </div>
+    <div class="buters-guide">
+        <h3 style="margin-bottom: 15px;">Xem Nhiều Nhất</h3>
+        <div ng-repeat="topview in BindTopViewProductForClientHomePage" style="margin-bottom: 15px; display: flex; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+            <div style="float:left;">
+                <img ng-src="{{topview.Image}}" style="width:70px; height:70px;" alt="">
+            </div>
+            <p>
+                <a href="/Client/HomeClient/ProductDetail?id={{topview.ProductID}}" style="color:#e44f2b; font-size: 13px; letter-spacing: -0.02em;">{{topview.Name}}</a>
+                <span style="font-size: 13px;letter-spacing: -0.02em;">Lượt xem : {{topview.Views}}</span>
+            </p>
+
+        </div>
+    </div>
+    <div class="buters-guide">
+        <h3 style="margin-bottom: 15px;">Tin Tức Mới Nhất</h3>
+        <div ng-repeat="newcontent in BindNewNewsForClientHomePage" style="margin-bottom: 15px; border-bottom: 1px solid #eee;">
+            <div style="float:left;">
+                <img ng-src="{{newcontent.Image}}" style="width:70px; height:70px;" alt="">
+            </div>
+            <p><a href="/Client/HomeClient/ContentDetail?id={{newcontent.ContentID}}" style="color:#e44f2b; font-size: 13px; letter-spacing: -0.02em; text-align:justify;">{{newcontent.Title}}</a></p>
+        </div>
+    </div>
+</div>

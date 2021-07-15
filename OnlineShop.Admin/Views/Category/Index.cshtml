@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "Danh Mục Loại Sản Phẩm";
+    ViewBag.SubMenu = "Danh Mục Sản Phẩm";
+}
+
+<link href="@Url.Content("~/Content/Category.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/categoryController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/categoryModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/categoryService.js")"></script>
+
+@using (Ajax.BeginForm("Index", "Category", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "categoryValid", @id = "categoryValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="categoryController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="CategoryTable"
+                     k-options="CategorySection"
+                     k-on-save="CategoryListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownCategory" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                <ul>
+                    <li ng-show="showErrorMsg(categoryValid.Name)">Tên Danh Mục Loại Sản Phẩm Không Được Để Trống</li>
+                    <li ng-show="CheckDuplicate">Tên Danh Mục Đã Tồn Tại</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Tên Danh Mục</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Name"
+                               id="Name"
+                               ng-model="category.Name"
+                               maxlength="500"
+                               ng-class="{'has-error': showErrorMsg(categoryValid.Name) || CheckDuplicate}"
+                               required />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Danh Mục Cha</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <select kendo-multi-column-combo-box
+                                id="ParentId"
+                                name="ParentId"
+                                ng-model="category.ParentId"
+                                k-data-source="ParentDropdownlist"
+                                k-data-text-field="'Name'"
+                                k-data-value-field="'CategoryID'"
+                                k-columns="[
+                                            { field: 'CategoryID', title: 'Mã Danh Mục', width: 200},
+                                            { field: 'Name', title: 'Tên Danh Mục', width: 200}
+                                           ]"
+                                k-filter="'contains'"
+                                k-auto-bind="false"
+                                class="ParentId"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Thứ Tự Hiển Thị</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="DisplayOrder"
+                               id="DisplayOrder"
+                               ng-model="category.DisplayOrder" />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Trạng Thái</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox"
+                               id="TrangThai"
+                               ng-model="category.Status"
+                               name="TrangThai"
+                               class="k-checkbox" />
+                        <label class="k-checkbox-label" for="TrangThai">Kích Hoạt</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="category.CategoryID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="category.CreatedByName"></label>
+                        <input type="hidden" id="CreatedByName" name="CreatedByName" ng-model="category.CreatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="category.CreatedDate"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="category.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="category.CategoryID > 0">
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Người Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="category.LastUpdatedByName"></label>
+                        <input type="hidden" id="LastUpdatedByName" name="LastUpdatedByName" ng-model="category.LastUpdatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-3">
+                        <label>Ngày Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="category.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="category.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnSave"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnSave"
+                            ng-disabled="DisabledBtnSave"
+                            ng-click="save(categoryValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> LƯU
+                    </button>
+
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnUpdate"
+                            ng-disabled="DisabledBtnUpdate"
+                            ng-click="update(categoryValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> CẬP NHẬT
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger k-grid-delete float-right btn-swidth mr-10"
+                            ng-click="close()">
+                        <i class="fa fa-times" aria-hidden="true"></i> ĐÓNG
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

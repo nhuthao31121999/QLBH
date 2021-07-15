@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Chi Tiết Sản Phẩm";
+    ViewBag.Message = "EnableSlider";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+}
+
+<link href="@Url.Content("~/Content/css/etalage.css")" rel="stylesheet" type="text/css" media="all">
+<link href="@Url.Content("~/Content/css/easy-responsive-tabs.css")" rel="stylesheet" type="text/css" media="all" />
+<script src="@Url.Content("~/Scripts/app/clientController/productDetailController.js")"></script>
+<script src="@Url.Content("~/Content/js/easyResponsiveTabs.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+        });
+    });
+</script>
+<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=268785843645809&autoLogAppEvents=1"></script>
+<style>
+    .scroll {
+        height: 450px;
+        overflow: scroll;
+    }
+
+        .scroll::-webkit-scrollbar {
+            width: 12px;
+        }
+
+    /*.scroll::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }*/
+
+    /*.scroll::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+        }*/
+</style>
+
+<div class="wrap" ng-controller="productDetailController">
+    <div class="preview-page">
+        <div class="section group">
+            <div class="cont-desc span_1_of_2">
+                <ul class="back-links">
+                    <li><a href="@Url.Action("Index", "HomeClient")">Trang Chủ</a> ::</li>
+                    <li><a href="/Client/HomeClient/ProductByCategory?id={{GetProductByIdForClientHomePage.CategoryID}}">{{GetProductByIdForClientHomePage.CategoryName}}</a> ::</li>
+                    <li>{{GetProductByIdForClientHomePage.Name}}</li>
+                </ul>
+                <div class="clear"> </div>
+                <div class="product-details">
+                    <div class="grid images_3_of_2">
+                        <ul id="etalage" class="etalage" style="display: block; width: 314px; height: 497px;">
+                            <li class="etalage_thumb thumb_3 etalage_thumb_active" style="background-image: none; display: list-item; opacity: 1;">
+                                <img class="etalage_thumb_image" ng-src="{{GetProductByIdForClientHomePage.Image}}" style="width: 300px; height: 340px;">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="desc span_3_of_2">
+                        <h2>{{GetProductByIdForClientHomePage.Name}} </h2>
+                        <p>{{GetProductByIdForClientHomePage.Description}}</p>
+                        <div class="price" style="margin-top: -5px; border-top: 1px solid #EBEBEB;">
+                            <p style="margin-top: 15px;">Đơn Giá: <span>{{GetProductByIdForClientHomePage.Price | number : 0}}<sup>vnđ</sup></span></p>
+                            <p style="margin-bottom: 10px; margin-top: -20px;" ng-show="GetProductByIdForClientHomePage.Discount != null && GetProductByIdForClientHomePage.Discount != 0">Giá Khuyến Mại: <span>{{GetProductByIdForClientHomePage.Discount | number : 0}}<sup>vnđ</sup></span></p>
+                        </div>
+                        <div class="available">
+                            <ul>
+                                <li><span>Mã Sản Phẩm:</span>&nbsp; {{GetProductByIdForClientHomePage.Code}}</li>
+                                <li><span>Bảo Hành:</span> &nbsp; {{GetProductByIdForClientHomePage.Warranty}}</li>
+                                <li><span>Sản Xuất Bởi:</span>&nbsp; {{GetProductByIdForClientHomePage.ProducerName}}</li>
+                                <li ng-show="GetProductByIdForClientHomePage.Quantity != 0 && GetProductByIdForClientHomePage.Quantity != null"><span>Số Lượng:</span>&nbsp; Còn {{GetProductByIdForClientHomePage.Quantity}} Sản Phẩm</li>
+                                <li ng-show="GetProductByIdForClientHomePage.Quantity == 0 || GetProductByIdForClientHomePage.Quantity == null"><span>Số Lượng:</span>&nbsp; Liên Hệ</li>
+                            </ul>
+                        </div>
+                        <div class="share-desc" style="margin-top: -60px;">
+                            <div class="button">
+                                <button class="addToCart" data-id="{{GetProductByIdForClientHomePage.ProductID}}" id="btnAddToCart" onclick="AddProduct()">Giỏ Hàng</button>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="wish-list"></div>
+                        <div class="colors-share">
+                            <div class="social-share">
+                                <h4>Chia Sẻ Sản Phẩm</h4>
+                                <ul>
+                                    <li><a class="share-face" href="https://www.facebook.com/ledungtb.96"> </a></li>
+                                    <li><a class="share-twitter" href="https://www.facebook.com/ledungtb.96"> </a></li>
+                                    <li><a class="share-google" href="https://www.facebook.com/ledungtb.96"> </a></li>
+                                    <li><a class="share-rss" href="https://www.facebook.com/ledungtb.96"> </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product_desc">
+                    <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                        <ul class="resp-tabs-list">
+                            <li class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab">Thông Tin Sản Phẩm</li>
+                            <li class="resp-tab-item" aria-controls="tab_item-2" role="tab">Bình Luận</li>
+                        </ul>
+                        <div class="clear"></div>
+                        <div class="resp-tabs-container">
+                            <div class="product-specifications resp-tab-content resp-tab-content-active" style="display:block" aria-labelledby="tab_item-0">
+                                <div class="scroll" ng-bind-html="GetProductByIdForClientHomePage.Detail"></div>
+                            </div>
+
+                            <div class="review resp-tab-content" aria-labelledby="tab_item-2">
+                                <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="900" data-numposts="10"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rightsidebar span_3_of_1 sidebar">
+                <h3>Sản Phẩm Cùng Loại</h3>
+                <ul class="popular-products">
+                    <li ng-repeat="productrelated in BindProductRelatedForClientProductDetailPage">
+                        <h4><a href="/Client/HomeClient/ProductDetail?id={{productrelated.ProductID}}">{{productrelated.Name}} </a></h4>
+                        <a href="/Client/HomeClient/ProductDetail?id={{productrelated.ProductID}}"><img ng-src="{{productrelated.Image}}" alt="" style="max-width: 60%;"></a>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <p ng-show="productrelated.Discount != null && productrelated.Discount != 0">
+                                    <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{productrelated.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                                    <span class="rupees">{{productrelated.Discount | number : 0}}<sup>vnđ</sup></span>
+                                </p>
+                                <p ng-show="productrelated.Discount == null || productrelated.Discount == 0">
+                                    <span class="rupees">{{productrelated.Price | number : 0}}<sup>vnđ</sup></span>
+                                </p>
+                            </div>
+                            <div class="add-cart">
+                                <h4>
+                                    <a href="" class="addToCart" data-id="{{productrelated.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                                </h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

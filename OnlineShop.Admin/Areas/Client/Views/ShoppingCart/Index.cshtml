@@ -1,0 +1,519 @@
+﻿
+@{
+    ViewBag.Title = "Giỏ Hàng";
+    ViewBag.Message = "EnableSlider";
+    Layout = "~/Areas/Client/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .k-radio-label:before {
+        content: "";
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 14px;
+        height: 14px;
+        border-style: solid;
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+
+        ul.cardList li {
+            cursor: pointer;
+            float: left;
+            margin-right: 0;
+            padding: 5px 4px;
+            text-align: center;
+            width: 90px;
+        }
+
+    i.VISA, i.MASTE, i.AMREX, i.JCB, i.VCB, i.TCB, i.MB, i.VIB, i.ICB, i.EXB, i.ACB, i.HDB, i.MSB, i.NVB, i.DAB, i.SHB, i.OJB, i.SEA, i.TPB, i.PGB, i.BidV, i.AGB, i.SCB, i.VPB, i.VAB, i.GPB, i.SGB, i.NAB, i.BAB {
+        width: 80px;
+        height: 30px;
+        display: block;
+        background: url(../../../../Content/Images/bank_logo.png) no-repeat;
+    }
+
+    i.MASTE {
+        background-position: 0px -31px
+    }
+
+    i.AMREX {
+        background-position: 0px -62px
+    }
+
+    i.JCB {
+        background-position: 0px -93px;
+    }
+
+    i.VCB {
+        background-position: 0px -124px;
+    }
+
+    i.TCB {
+        background-position: 0px -155px;
+    }
+
+    i.MB {
+        background-position: 0px -186px;
+    }
+
+    i.VIB {
+        background-position: 0px -217px;
+    }
+
+    i.ICB {
+        background-position: 0px -248px;
+    }
+
+    i.EXB {
+        background-position: 0px -279px;
+    }
+
+    i.ACB {
+        background-position: 0px -310px;
+    }
+
+    i.HDB {
+        background-position: 0px -341px;
+    }
+
+    i.MSB {
+        background-position: 0px -372px;
+    }
+
+    i.NVB {
+        background-position: 0px -403px;
+    }
+
+    i.DAB {
+        background-position: 0px -434px;
+    }
+
+    i.SHB {
+        background-position: 0px -465px;
+    }
+
+    i.OJB {
+        background-position: 0px -496px;
+    }
+
+    i.SEA {
+        background-position: 0px -527px;
+    }
+
+    i.TPB {
+        background-position: 0px -558px;
+    }
+
+    i.PGB {
+        background-position: 0px -589px;
+    }
+
+    i.BidV {
+        background-position: 0px -620px;
+    }
+
+    i.AGB {
+        background-position: 0px -651px;
+    }
+
+    i.SCB {
+        background-position: 0px -682px;
+    }
+
+    i.VPB {
+        background-position: 0px -713px;
+    }
+
+    i.VAB {
+        background-position: 0px -744px;
+    }
+
+    i.GPB {
+        background-position: 0px -775px;
+    }
+
+    i.SGB {
+        background-position: 0px -806px;
+    }
+
+    i.NAB {
+        background-position: 0px -837px;
+    }
+
+    i.BAB {
+        background-position: 0px -868px;
+    }
+
+    .has-error {
+        border: 1px solid red !important;
+    }
+
+    .mr-15 {
+        margin-right: 0px !important;
+    }
+
+    .alert-danger {
+        color: #b94a48;
+        background-color: #f2dede;
+        border-color: #eed3d7 !important;
+    }
+
+    .alert {
+        padding: 10px !important;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+</style>
+<script src="@Url.Content("~/Scripts/app/clientController/shoppingCart.js")"></script>
+<script src="@Url.Content("~/Scripts/app/clientController/paymentShoppingCartController.js")"></script>
+<script src="@Url.Content("~/Scripts/numeral/numeral.js")"></script>
+
+<div class="wrap" ng-controller="paymentShoppingCartController">
+    <div class="preview-page">
+        <ul class="back-links">
+            <li><a href="@Url.Action("Index", "HomeClient")">Trang Chủ</a> ::</li>
+            <li>Giỏ Hàng</li>
+        </ul>
+        <div class="clear"></div>
+        <div class="product-details">
+            <div class="single_top">
+                <div class="single_grid">
+                    <div id="cartContent">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr style="font-weight: bolder;">
+                                    <td colspan="2" style="font-size: 14px;">Tên Sản Phẩm</td>
+                                    <td style="text-align:center; width: 10%; font-size: 14px;">Giá Ban Đầu</td>
+                                    <td style="text-align:center; width: 10%; font-size: 14px;">Giá Khuyến Mãi</td>
+                                    <td style="text-align:center; width: 10%; font-size: 14px;">Số Lượng</td>
+                                    <td style="text-align:center; width: 10%; font-size: 14px;">Tạm Tính</td>
+                                    <td style="text-align:center; width: 10%; font-size: 14px;">Thao Tác</td>
+                                </tr>
+                            </thead>
+                            <tbody id="cartBody"></tbody>
+                        </table>
+                        <div style="margin-top: -5px; text-align: left; width: 79.13%; float: left;">
+                            <button class="btn btn-success" id="btnContinue">Tiếp tục mua hàng</button>
+                            <button class="btn btn-danger" id="btnDeleteAll">Xóa giỏ hàng</button>
+                            <button class="btn btn-primary" id="btnCheckout" ng-click="ShowPayment()">Thanh toán</button>
+                        </div>
+                        <div style="margin-top: -5px; text-align: right; float: left; width: 20.87%;">
+                            <span style="text-align: right; font-weight: bold;">Tổng tiền:</span>
+                            <span id="lblTotalOrder" style="font-size: 16px; font-weight: bold; color: #d0021b;"></span>
+                            <span style="font-size: 16px; font-weight: bold; color: #d0021b;"><sup>vnđ</sup></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        @using (Ajax.BeginForm("Index", "ShoppingCart", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "paymentValid", @id = "paymentValid", @novalidate = "novalidate" }))
+        {
+            <div class="contact-form" style="padding: 20px 0;" ng-show="EnableShoppingCart">
+                <h3>Mục Thanh Toán</h3>
+                <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                    <ul style="margin-bottom:0;">
+                        <li style="font-size: 14px;" ng-show="showErrorMsg(paymentValid.OrderName)">Tên Không Được Để Trống</li>
+                        <li style="font-size: 14px;" ng-show="showErrorMsg(paymentValid.OrderMobile)">Số Điện Thoại Không Được Để Trống</li>
+                    </ul>
+                </div>
+                <div style="width: 30%;float: left;">
+                    <span style="float: right; padding: 11px;">
+                        Họ Và Tên
+                        <span style="float:right;">:</span>
+                        <span style="float:right;color:red;">*</span>
+                    </span>
+                </div>
+                <div style="width: 1%;float: left;"></div>
+                <div style="width: 69%;float: left;">
+                    <input style="width: 75%;"
+                           name="OrderName"
+                           type="text"
+                           class="textbox textbox1"
+                           ng-model="order.OrderName"
+                           ng-class="{'has-error': showErrorMsg(paymentValid.OrderName)}"
+                           required
+                           placeholder="Họ Và Tên...">
+                </div>
+
+                <div class="clear"></div>
+
+                <div style="width: 30%;float: left;">
+                    <span style="float: right; padding: 11px;">
+                        Số Điện Thoại
+                        <span style="float:right;">:</span>
+                        <span style="float:right;color:red;">*</span>
+                    </span>
+                </div>
+                <div style="width: 1%;float: left;"></div>
+                <div style="width: 69%;float: left;">
+                    <input style="width: 75%;"
+                           name="OrderMobile"
+                           type="text"
+                           class="textbox textbox1"
+                           ng-model="order.OrderMobile"
+                           ng-class="{'has-error': showErrorMsg(paymentValid.OrderMobile)}"
+                           required
+                           placeholder="Số Điện Thoại...">
+                </div>
+
+                <div class="clear"></div>
+
+                <div style="width: 30%;float: left;">
+                    <span style="float: right; padding: 11px;">Địa Chỉ:</span>
+                </div>
+                <div style="width: 1%;float: left;"></div>
+                <div style="width: 69%;float: left;">
+                    <input style="width: 75%;"
+                           name="OrderAdress"
+                           type="text"
+                           class="textbox textbox1"
+                           ng-model="order.OrderAdress"
+                           placeholder="Địa Chỉ...">
+                </div>
+
+                <div class="clear"></div>
+
+                <div style="width: 30%;float: left;">
+                    <span style="float: right; padding: 11px;">Email:</span>
+                </div>
+                <div style="width: 1%;float: left;"></div>
+                <div style="width: 69%;float: left;">
+                    <input style="width: 75%;"
+                           name="OrderEmail"
+                           type="text"
+                           class="textbox textbox1"
+                           ng-model="order.OrderEmail"
+                           placeholder="Email...">
+                </div>
+
+                <div class="clear"></div>
+
+                <div style="width: 30%;float: left;">
+                    <span style="float: right; padding: 11px;">Phương Thức Thanh Toán:</span>
+                </div>
+                <div style="width: 1%;float: left;"></div>
+                <div style="width: 69%;float: left; margin-top: 10px;">
+                    <input type="radio" name="paymentMethod" id="engine1" class="k-radio" value="COD">
+                    <label class="k-radio-label" for="engine1">COD</label>
+
+                    <input type="radio" name="paymentMethod" id="engine3" class="k-radio" value="Chuyển khoản">
+                    <label class="k-radio-label" for="engine3">Chuyển khoản</label>
+
+                    <input type="radio" name="paymentMethod" id="engine2" class="k-radio" value="Thanh toán bằng thẻ visa và master">
+                    <label class="k-radio-label" for="engine2">Thanh toán bằng thẻ visa và master</label>
+
+                    <div id="cod_content" class="boxContent" style="display:none;">
+                        <p>
+                            Thanh toán tiền khi nhận được hàng.<br />
+                            Quý khách ở ngoại tỉnh sẽ chịu thêm 1% giá trị đơn hàng từ chi phí thu hộ. Quý khách ở Hà Nội được miễn phí.
+                        </p>
+                    </div>
+
+                    <div id="atm_online_content" class="boxContent" style="display:none;">
+                        Danh sách ngân hàng nội địa:
+                        <ul class="cardList clearfix">
+                            <li class="bank-online-methods ">
+                                <label for="vcb_ck_on">
+                                    <i class="VCB" title="Ngân hàng TMCP Ngoại Thương Việt Nam"></i>
+                                    <input type="radio" id="VCB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="vnbc_ck_on">
+                                    <i class="DAB" title="Ngân hàng Đông Á"></i>
+                                    <input type="radio" id="DAB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="tcb_ck_on">
+                                    <i class="TCB" title="Ngân hàng Kỹ Thương"></i>
+                                    <input type="radio" id="TCB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_mb_ck_on">
+                                    <i class="MB" title="Ngân hàng Quân Đội"></i>
+                                    <input type="radio" id="MB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="shb_ck_on">
+                                    <i class="SHB" title="Ngân hàng Sài Gòn - Hà Nội"></i>
+                                    <input type="radio" id="SHB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_vib_ck_on">
+                                    <i class="VIB" title="Ngân hàng Quốc tế"></i>
+                                    <input type="radio" id="VIB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_vtb_ck_on">
+                                    <i class="ICB" title="Ngân hàng Công Thương Việt Nam"></i>
+                                    <input type="radio" id="ICB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_exb_ck_on">
+                                    <i class="EXB" title="Ngân hàng Xuất Nhập Khẩu"></i>
+                                    <input type="radio" id="EXB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_acb_ck_on">
+                                    <i class="ACB" title="Ngân hàng Á Châu"></i>
+                                    <input type="radio" id="ACB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_hdb_ck_on">
+                                    <i class="HDB" title="Ngân hàng Phát triển Nhà TPHCM"></i>
+                                    <input type="radio" id="HDB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_msb_ck_on">
+                                    <i class="MSB" title="Ngân hàng Hàng Hải"></i>
+                                    <input type="radio" id="MSB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_nvb_ck_on">
+                                    <i class="NVB" title="Ngân hàng Nam Việt"></i>
+                                    <input type="radio" id="NVB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_vab_ck_on">
+                                    <i class="VAB" title="Ngân hàng Việt Á"></i>
+                                    <input type="radio" id="VAB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_vpb_ck_on">
+                                    <i class="VPB" title="Ngân Hàng Việt Nam Thịnh Vượng"></i>
+                                    <input type="radio" id="VPB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_scb_ck_on">
+                                    <i class="SCB" title="Ngân hàng Sài Gòn Thương tín"></i>
+                                    <input type="radio" id="SCB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="ojb_ck_on">
+                                    <i class="OJB" title="Ngân hàng Đại Dương"></i>
+                                    <input type="radio" id="OJB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="bnt_atm_pgb_ck_on">
+                                    <i class="PGB" title="Ngân hàng Xăng dầu Petrolimex"></i>
+                                    <input type="radio" id="PGB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="bnt_atm_gpb_ck_on">
+                                    <i class="GPB" title="Ngân hàng TMCP Dầu khí Toàn Cầu"></i>
+                                    <input type="radio" id="GPB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="bnt_atm_agb_ck_on">
+                                    <i class="AGB" title="Ngân hàng Nông nghiệp &amp; Phát triển nông thôn"></i>
+                                    <input type="radio" id="AGB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="bnt_atm_sgb_ck_on">
+                                    <i class="SGB" title="Ngân hàng Sài Gòn Công Thương"></i>
+                                    <input type="radio" id="SGB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="bnt_atm_nab_ck_on">
+                                    <i class="NAB" title="Ngân hàng Nam Á"></i>
+                                    <input type="radio" id="NAB" name="bankcode" />
+                                </label>
+                            </li>
+                            <li class="bank-online-methods ">
+                                <label for="sml_atm_bab_ck_on">
+                                    <i class="BAB" title="Ngân hàng Bắc Á"></i>
+                                    <input type="radio" id="BAB" name="bankcode" />
+                                </label>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div id="ck_content" class="boxContent" style="display:none;">
+                        <p>
+                            Quý khách chuyển khoản trước theo thông tin dưới đây :<br /><br />
+
+                            Công Ty TNHH Thương Mại Dịch Vụ Tin Học <br />
+                            Số 269 Đường Chùa Bộc, Phường Trung Liệt, Quận Đống Đa, Thành Phố Hà Nội<br />
+                            MST: 0101468933<br /><br />
+
+                            ACB chi nhánh Hà Nội - 13856879<br />
+                            VCB chi nhánh Chương Dương - 054 100 153 7202<br />
+                            BIDV chi nhánh Hà Thành - 1221 0000 413217<br />
+                            Công thương chi nhánh Nam Thăng Long - 10201 0000 783123<br />
+                            Techcombank Kim Liên - 103 227 577 86015<br />
+                            Agribank chi nhánh Hà Nội 1500 2010 81146<br />
+                            Ngân hàng TMCP Đông Nam Á (Seabank) - 045000 14075132<br />
+                            TMCP Quân Đội - Chi nhánh Hoàn Kiếm - 0571102448003
+                        </p>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div>
+                    <button type="button"
+                            id="btnSave"
+                            class="mybutton"
+                            ng-click="save(paymentValid)">
+                        Gửi Đơn Hàng
+                    </button>
+                    <button type="button"
+                            style="margin-right: 10px;"
+                            class="mybutton"
+                            ng-click="close()">
+                        Đóng
+                    </button>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<script id="tplCart" type="x-tmpl-mustache">
+    <tr style="font-size: 15px;">
+        <td style="border-right: 1px solid #fff;width: 115px;"><img src="{{Image}}" height="100" /></td>
+        <td style="padding-left: 0px;">
+            <b>{{Name}}</b><br />
+            <p style="color: #db0006 !important;margin: -2px 0;font-size: 14px;">Mã sản phẩm: {{Code}}</p>
+            <p style="margin:-2px 0;font-size: 14px;">Bảo hành: {{Warranty}}</p>
+            <p style="color: #db0006 !important;margin: -2px 0;font-size: 14px;">Khuyến mãi: </p>
+        </td>
+        <td style="text-align:center; vertical-align: middle;">{{Price}}</td>
+        <td style="text-align:center; vertical-align: middle;">{{Discount}}</td>
+        <td style="text-align:center; vertical-align: middle;"><input type="number" data-id="{{ProductId}}" data-price="{{Price}}" value="{{Quantity}}" class="input txtQuantity" style="width: 60%;" /></td>
+        <td style="text-align:center; vertical-align: middle;" id="amount_{{ProductId}}">{{Amount}}</td>
+        <td style="text-align:center; vertical-align: middle;">
+            <button class="btn btn-danger btnDeleteItem" data-id="{{ProductId}}" style="background-color: #fff;">
+                <img src="/Content/Images/icon_del.png" />
+            </button>
+        </td>
+    </tr>
+</script>

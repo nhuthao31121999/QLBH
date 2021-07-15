@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "Giới thiệu";
+    ViewBag.SubMenu = "Danh Mục Thông Tin";
+}
+
+<link href="@Url.Content("~/Content/About.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/app/controller/aboutController.js")"></script>
+<script src="@Url.Content("~/Scripts/app/models/aboutModel.js")"></script>
+<script src="@Url.Content("~/Scripts/app/services/aboutService.js")"></script>
+<script src="@Url.Content("~/ckfinder/ckfinder.js")"></script>
+
+@using (Ajax.BeginForm("Index", "About", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "aboutValid", @id = "aboutValid", @novalidate = "novalidate" }))
+{
+    <div ng-controller="aboutController">
+        <div class="row">
+            <div class="col-md-12">
+                <div kendo-grid
+                     id="AboutTable"
+                     k-options="AboutSection"
+                     k-on-save="AboutListSave">
+                </div>
+            </div>
+        </div>
+
+        <div id="KenWindownAbout" class="k-window-content" style="display:none;">
+            <div class="clear-5"></div>
+            <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                <ul>
+                    <li ng-show="showErrorMsg(aboutValid.Name)">Tên Giới Thiệu Không Được Để Trống</li>
+                    <li ng-show="CheckDuplicate">Tên Giới Thiệu Đã Tồn Tại</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="col-sm-2">
+                        <label>Nội Dung</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-10">
+                        <textarea class="form-control"
+                                  name="Detail"
+                                  id="Detail"
+                                  ng-model="about.Detail"
+                                  kendo-editor
+                                  k-options="CustomDetailEditorOptions"
+                                  ng-bind-html="about.Detail"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="col-sm-3">
+                        <label>Tên Giới Thiệu</label>
+                        <span class="asterisk">*</span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Name"
+                               id="Name"
+                               style="margin-bottom: 15px;"
+                               ng-model="about.Name"
+                               maxlength="500"
+                               ng-class="{'has-error': showErrorMsg(aboutValid.Name) || CheckDuplicate}"
+                               required />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Tiêu Đề</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input class="form-control"
+                               name="Description"
+                               id="Description"
+                               style="margin-bottom: 15px;"
+                               ng-model="about.Description" />
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Hình Ảnh</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-default" ng-click="ChoonseImage()">Chọn Ảnh</button>
+                    </div>
+                    <div class="col-sm-6">
+                        <input class="form-control"
+                               ng-show="false"
+                               name="Image"
+                               id="ImageLabel"
+                               ng-model="about.Image" />
+                        <div name="Image"
+                             style="width: 100%; height: 150px; margin-top: -34px; background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url('{{about.Image}}');"
+                             id="ImagePic"></div>
+                    </div>
+                    <div class="col-sm-3">
+                        <label>Trạng Thái</label>
+                        <span class="asterisk"></span>:
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox"
+                               id="TrangThai"
+                               ng-model="about.Status"
+                               name="TrangThai"
+                               class="k-checkbox" />
+                        <label class="k-checkbox-label" for="TrangThai">Kích Hoạt</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="about.AboutID > 0">
+                <div class="col-sm-7">
+                    <div class="col-sm-2">
+                        <label>Người Tạo:</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label ng-bind="about.CreatedByName"></label>
+                        <input type="hidden" id="CreatedByName" name="CreatedByName" ng-model="about.CreatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="col-sm-3">
+                        <label>Ngày Tạo:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="about.CreatedDate"></label>
+                        <input type="hidden" id="CreatedDate" name="CreatedDate" ng-model="about.CreatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="about.AboutID > 0">
+                <div class="col-sm-7">
+                    <div class="col-sm-2">
+                        <label>Người Sửa:</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <label ng-bind="about.LastUpdatedByName"></label>
+                        <input type="hidden" id="LastUpdatedByName" name="LastUpdatedByName" ng-model="about.LastUpdatedByName" ng-os-hidden />
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="col-sm-3">
+                        <label>Ngày Sửa:</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <label ng-bind="about.LastUpdatedDate"></label>
+                        <input type="hidden" id="LastUpdatedDate" name="LastUpdatedDate" ng-model="about.LastUpdatedDate" ng-os-hidden />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button"
+                            id="btnSave"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnSave"
+                            ng-disabled="DisabledBtnSave"
+                            ng-click="save(aboutValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> LƯU
+                    </button>
+
+                    <button type="button"
+                            id="btnUpdate"
+                            class="btn btn-primary float-right btn-swidth mr-10"
+                            ng-show="ShowBtnUpdate"
+                            ng-disabled="DisabledBtnUpdate"
+                            ng-click="update(aboutValid)">
+                        <i class="fa fa-save " aria-hidden="true"></i> CẬP NHẬT
+                    </button>
+                    <button type="button"
+                            class="btn btn-danger k-grid-delete float-right btn-swidth mr-10"
+                            ng-click="close()">
+                        <i class="fa fa-times" aria-hidden="true"></i> ĐÓNG
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

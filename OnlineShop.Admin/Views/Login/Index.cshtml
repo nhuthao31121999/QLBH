@@ -1,0 +1,71 @@
+﻿@model OnlineShop.Entities.ViewModel.LoginAdminViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Đăng Nhập</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Services Pte. Ltd. (Registration No: 200003956G)">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/css/stylelogin.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    @using (Html.BeginForm("Index", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="signupform">
+            <div class="container">
+                <div class="agile_info">
+                    <div class="w3l_form">
+                        <div class="left_grid_info">
+                            <h1>Hệ Thống Quản Trị Phần Mềm Quản Lý Bán Hàng </h1>
+                            <img src="~/Content/Images/image.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="w3_info">
+                        <h2>Đăng nhập vào tài khoản của bạn</h2>
+                        <p>Nhập thông tin của bạn để đăng nhập.</p>
+                        <form action="#" method="post">
+                            <label>Tên tài Khoản</label>
+                            <div class="input-group">
+                                <span class="fa fa-envelope" aria-hidden="true"></span>
+                                @*<input type="text" placeholder="Nhập tài khoản">*@
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Nhập tài khoản" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                            </div>
+                            <label>Mật Khẩu</label>
+                            <div class="input-group">
+                                <span class="fa fa-lock" aria-hidden="true"></span>
+                                @*<input type="Password" placeholder="Nhập mật khẩu">*@
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="login-check">
+                                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> Nhớ mật khẩu</label>
+                            </div>
+                            <button class="btn btn-danger btn-block" type="submit">Đăng Nhập</button>
+                        </form>
+                        <p class="account">Bằng cách nhấp vào đăng nhập, bạn đồng ý với Điều khoản & Điều kiện của chúng tôi!</p>
+                        <p class="account1">Không có tài khoản? <a href="@Url.Action("Register", "Login")">Đăng Ký Tại Đây</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @*@{ Html.RenderPartial("_ResetPass");}*@
+    @*<script src="~/Scripts/app/clientController/loginController.js"></script>*@
+</body>
+</html>

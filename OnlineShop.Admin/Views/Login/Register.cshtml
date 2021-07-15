@@ -1,0 +1,155 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en" ng-app="osApplication">
+<head>
+    <title>Đăng Ký</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Estate Register Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="@Url.Content("~/Content/css/styleregister.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+
+    <script src="@Url.Content("~/Scripts/kendo/2017/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/mustache.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2017/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/jquery.openCarousel.js")"></script>
+    <script src="@Url.Content("~/Content/js/easing.js")"></script>
+    <script src="@Url.Content("~/Content/js/move-top.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.sticky.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/section-bar.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/common.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-route.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-resource.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-messages.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-cookies.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-kendo.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-sanitize.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/constants.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/app.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/directives.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/app/clientServices/clientHomePageService.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/controller/registerForAdminController.js")"></script>
+    <style>
+        .has-error {
+            border: 1px solid red !important;
+        }
+
+        .mr-15 {
+            margin-right: 0px !important;
+        }
+
+        .alert-danger {
+            color: #b94a48;
+            background-color: #f2dede;
+            border-color: #eed3d7 !important;
+        }
+
+        .alert {
+            padding: 10px !important;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+@using (Ajax.BeginForm("Register", "Login", null, new AjaxOptions { HttpMethod = "POST" }, new { @name = "registerValid", @id = "registerValid", @novalidate = "novalidate" }))
+{
+    <body ng-controller="registerForAdminController">
+
+        <div class="signupform">
+            <div class="container" style="padding-top: 30px;">
+                <div class="agile_info">
+                    <div class="w3l_form">
+                        <div class="left_grid_info">
+                            <div class="alert alert-danger mr-15" ng-show="IsSave && formHasError()">
+                                <ul style="margin-bottom:0;">
+                                    <li style="font-size: 14px;" ng-show="showErrorMsg(registerValid.UserName)">Tên Không Được Để Trống</li>
+                                    <li style="font-size: 14px;" ng-show="showErrorMsg(registerValid.Password)">Mật Khẩu Không Được Để Trống</li>
+                                    <li style="font-size: 14px;" ng-show="showErrorMsg(registerValid.Name)">Họ Và Tên Không Được Để Trống</li>
+                                    <li style="font-size: 14px;" ng-show="CheckDuplicate">Tên Đăng Nhập Đã Tồn Tại</li>
+                                </ul>
+                            </div>
+                            <div class="alert alert-danger mr-15" ng-show="Sucsess">
+                                Thanhf cong
+                            </div>
+                            <div class="alert alert-danger mr-15" ng-show="Fail">
+                                That bai
+                            </div>
+                            <img src="~/Content/Images/left.png" />
+                        </div>
+                    </div>
+                    <div class="w3_info">
+                        <h2>Đăng Ký Tài Khoản</h2>
+                        <div class="input-group">
+                            <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                            <input type="text"
+                                   placeholder="Tên Đăng Nhập"
+                                   name="UserName"
+                                   ng-model="register.UserName"
+                                   ng-class="{'has-error': showErrorMsg(registerValid.UserName) || CheckDuplicate}"
+                                   required>
+                        </div>
+
+                        <div class="input-group">
+                            <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            <input type="Password"
+                                   name="Password"
+                                   placeholder="Mật Khẩu"
+                                   ng-model="register.Password"
+                                   ng-class="{'has-error': showErrorMsg(registerValid.Password)}"
+                                   required>
+                        </div>
+
+                        <div class="input-group">
+                            <span><i class="fa fa-user-md" aria-hidden="true"></i></span>
+                            <input type="text"
+                                   placeholder="Họ Và Tên"
+                                   name="Name"
+                                   ng-model="register.Name"
+                                   ng-class="{'has-error': showErrorMsg(registerValid.Name)}"
+                                   required>
+                        </div>
+
+                        <div class="input-group">
+                            <span><i class="fa fa-map" aria-hidden="true"></i></span>
+                            <input type="text" placeholder="Địa Chỉ" name="Address" ng-model="register.Address">
+                        </div>
+
+                        <div class="input-group">
+                            <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            <input type="text" placeholder="Email" name="Email" ng-model="register.Email">
+                        </div>
+
+                        <div class="input-group">
+                            <span><i class="fa fa-phone" aria-hidden="true"></i></span>
+                            <input type="text" placeholder="Điện Thoại" name="Phone" ng-model="register.Phone">
+                        </div>
+                        <button class="btn btn-danger btn-block" ng-click="save(registerValid)" type="button">Đăng Ký</button>
+
+                        <p class="account">Bạn Đã Có Tài Khoản? <a href="@Url.Action("Index", "Login")">Đăng Nhập</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+}
+</html>

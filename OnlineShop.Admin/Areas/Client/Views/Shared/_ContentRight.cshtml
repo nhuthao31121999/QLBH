@@ -1,0 +1,34 @@
+﻿<div class="content-bottom-right">
+    <h3>Sản Phẩm Nổi Bật</h3>
+    <div class="section group">
+        <div class="grid_1_of_4 images_1_of_4" ng-repeat="hotproduct in BindHotProductForClientHomePage">
+            <h4><a href="/Client/HomeClient/ProductDetail?id={{hotproduct.ProductID}}">{{hotproduct.Name}}</a></h4>
+            <a href="/Client/HomeClient/ProductDetail?id={{hotproduct.ProductID}}"><img ng-src="{{hotproduct.Image}}" alt="" style="width:120px; height:120px;" /></a>
+        </div>
+    </div>
+
+    <h3>Sản Phẩm Mới Nhất</h3>
+    <div class="section group">
+        <div class="grid_1_of_4 images_1_of_4" ng-repeat="newproduct in BindNewProductForClientHomePage">
+            <h4><a href="/Client/HomeClient/ProductDetail?id={{newproduct.ProductID}}">{{newproduct.Name}}</a></h4>
+            <a href="/Client/HomeClient/ProductDetail?id={{newproduct.ProductID}}"><img ng-src="{{newproduct.Image}}" alt="" style="width:120px; height:120px;" /></a>
+            <div class="price-details">
+                <div class="price-number">
+                    <p ng-show="newproduct.Discount != null && newproduct.Discount != 0">
+                        <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{newproduct.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                        <span class="rupees">{{newproduct.Discount | number : 0}}<sup>vnđ</sup></span>
+                    </p>
+                    <p ng-show="newproduct.Discount == null || newproduct.Discount == 0">
+                        <span class="rupees">{{newproduct.Price | number : 0}}<sup>vnđ</sup></span>
+                    </p>
+                </div>
+                <div class="add-cart">
+                    <h4>
+                        <a href="" class="addToCart" data-id="{{newproduct.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                    </h4>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,216 @@
+﻿
+@{
+    ViewBag.Title = "Sản Phẩm Theo Danh Mục";
+    Layout = "~/Areas/Client/Views/Shared/_LayoutNotSliderForProduct.cshtml";
+}
+<style>
+    .k-widget {
+        height: 25px;
+    }
+
+    .k-dropdown-wrap {
+        height: 25px;
+    }
+
+    .k-input {
+        height: 20px;
+    }
+
+    span.k-input.ng-scope {
+        font-size: 13px;
+        margin-top: -3px;
+    }
+
+    li.k-item.ng-scope {
+        font-size: 13px;
+    }
+
+    .k-icon {
+        margin-bottom: 25px;
+        margin-left: 10px;
+    }
+
+    .filter-product {
+        float: right;
+        padding-right: 10px;
+        margin-top: -3px;
+    }
+</style>
+<div class="content-bottom-right">
+    <h3>
+        <span>{{GetCategoryForClientHomePage.Name}}</span>
+        <span class="filter-product">
+            <select kendo-drop-down-list
+                    id="Filter"
+                    name="Filter"
+                    ng-model="filter"
+                    ng-change="ChangeShowFilter();"
+                    k-data-source="FilterDropdownlist"
+                    k-data-text-field="'Name'"
+                    k-data-value-field="'Id'"
+                    class="Filter"></select>
+        </span>
+    </h3>
+
+    <div ng-show="sapxepsanpham">
+        <div class="section group" ng-show="ShowProductDontBlank">
+            <div class="grid_1_of_4 images_1_of_4" ng-repeat="productbycategory in GetProductByCategoryForClientHomePage">
+                <h4><a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}">{{productbycategory.Name}}</a></h4>
+                <a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}"><img ng-src="{{productbycategory.Image}}" alt="" style="width:120px; height:120px;" /></a>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p ng-show="productbycategory.Discount != null && productbycategory.Discount != 0">
+                            <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                            <span class="rupees">{{productbycategory.Discount | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                        <p ng-show="productbycategory.Discount == null || productbycategory.Discount == 0">
+                            <span class="rupees">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                    </div>
+                    <div class="add-cart">
+                        <h4>
+                            <a href="" class="addToCart" data-id="{{productbycategory.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                        </h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="ShowFilterNameASC">
+        <div class="section group" ng-show="ShowProductDontBlank">
+            <div class="grid_1_of_4 images_1_of_4" ng-repeat="productbycategory in FilterNameASC">
+                <h4><a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}">{{productbycategory.Name}}</a></h4>
+                <a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}"><img ng-src="{{productbycategory.Image}}" alt="" style="width:120px; height:120px;" /></a>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p ng-show="productbycategory.Discount != null && productbycategory.Discount != 0">
+                            <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                            <span class="rupees">{{productbycategory.Discount | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                        <p ng-show="productbycategory.Discount == null || productbycategory.Discount == 0">
+                            <span class="rupees">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                    </div>
+                    <div class="add-cart">
+                        <h4>
+                            <a href="" class="addToCart" data-id="{{productbycategory.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                        </h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="ShowFilterNewProduct">
+        <div class="section group" ng-show="ShowProductDontBlank">
+            <div class="grid_1_of_4 images_1_of_4" ng-repeat="productbycategory in FilterNewProduct">
+                <h4><a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}">{{productbycategory.Name}}</a></h4>
+                <a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}"><img ng-src="{{productbycategory.Image}}" alt="" style="width:120px; height:120px;" /></a>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p ng-show="productbycategory.Discount != null && productbycategory.Discount != 0">
+                            <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                            <span class="rupees">{{productbycategory.Discount | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                        <p ng-show="productbycategory.Discount == null || productbycategory.Discount == 0">
+                            <span class="rupees">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                    </div>
+                    <div class="add-cart">
+                        <h4>
+                            <a href="" class="addToCart" data-id="{{productbycategory.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                        </h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="ShowFilterPriceASC">
+        <div class="section group" ng-show="ShowProductDontBlank">
+            <div class="grid_1_of_4 images_1_of_4" ng-repeat="productbycategory in FilterPriceASC">
+                <h4><a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}">{{productbycategory.Name}}</a></h4>
+                <a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}"><img ng-src="{{productbycategory.Image}}" alt="" style="width:120px; height:120px;" /></a>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p ng-show="productbycategory.Discount != null && productbycategory.Discount != 0">
+                            <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                            <span class="rupees">{{productbycategory.Discount | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                        <p ng-show="productbycategory.Discount == null || productbycategory.Discount == 0">
+                            <span class="rupees">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                    </div>
+                    <div class="add-cart">
+                        <h4>
+                            <a href="" class="addToCart" data-id="{{productbycategory.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                        </h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="ShowFilterPriceDESC">
+        <div class="section group" ng-show="ShowProductDontBlank">
+            <div class="grid_1_of_4 images_1_of_4" ng-repeat="productbycategory in FilterPriceDESC">
+                <h4><a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}">{{productbycategory.Name}}</a></h4>
+                <a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}"><img ng-src="{{productbycategory.Image}}" alt="" style="width:120px; height:120px;" /></a>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p ng-show="productbycategory.Discount != null && productbycategory.Discount != 0">
+                            <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                            <span class="rupees">{{productbycategory.Discount | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                        <p ng-show="productbycategory.Discount == null || productbycategory.Discount == 0">
+                            <span class="rupees">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                    </div>
+                    <div class="add-cart">
+                        <h4>
+                            <a href="" class="addToCart" data-id="{{productbycategory.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                        </h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="ShowFilterTopViewProduct">
+        <div class="section group" ng-show="ShowProductDontBlank">
+            <div class="grid_1_of_4 images_1_of_4" ng-repeat="productbycategory in FilterTopViewProduct">
+                <h4><a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}">{{productbycategory.Name}}</a></h4>
+                <a href="/Client/HomeClient/ProductDetail?id={{productbycategory.ProductID}}"><img ng-src="{{productbycategory.Image}}" alt="" style="width:120px; height:120px;" /></a>
+                <div class="price-details">
+                    <div class="price-number">
+                        <p ng-show="productbycategory.Discount != null && productbycategory.Discount != 0">
+                            <span class="rupees" style="text-decoration: line-through; color: #e44f2b;">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>&nbsp;
+                            <span class="rupees">{{productbycategory.Discount | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                        <p ng-show="productbycategory.Discount == null || productbycategory.Discount == 0">
+                            <span class="rupees">{{productbycategory.Price | number : 0}}<sup>vnđ</sup></span>
+                        </p>
+                    </div>
+                    <div class="add-cart">
+                        <h4>
+                            <a href="" class="addToCart" data-id="{{productbycategory.ProductID}}" id="btnAddToCart" onclick="AddProduct()"><i class="fa fa-shopping-cart"></i>&nbsp;Giỏ Hàng</a>
+                        </h4>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div ng-show="ShowProductBlank">
+        <p style="text-align:center;">Sản phẩm đang được cập nhật ......</p>
+    </div>
+</div>

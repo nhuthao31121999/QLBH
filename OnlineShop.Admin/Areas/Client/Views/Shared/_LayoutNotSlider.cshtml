@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="osApplication">
+<head>
+    <title>@(ViewBag.Title)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+    <link href="@Url.Content("~/Content/css/style.css")" rel="stylesheet" type="text/css" media="all">
+    <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet" type="text/css" media="all">
+    <link href="@Url.Content("~/Content/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" media="all">
+
+    <link href="@Url.Content("~/Content/kendo/2017/kendo.common-material.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/kendo/2017/kendo.material.min.css")" rel="stylesheet" type="text/css">
+
+    <script src="@Url.Content("~/Scripts/kendo/2017/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2017/kendo.all.min.js")"></script>
+
+    <script src="@Url.Content("~/Content/js/jquery.openCarousel.js")"></script>
+    <script src="@Url.Content("~/Content/js/easing.js")"></script>
+    <script src="@Url.Content("~/Content/js/move-top.js")"></script>
+    <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/jquery.sticky.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/bootbox.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/plugins/section-bar.js")"></script>
+
+    <!--popup js-->
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/common.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+
+    <!--angular-->
+    <script src="@Url.Content("~/Scripts/angular.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-route.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-resource.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-messages.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-cookies.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-kendo.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-sanitize.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/a/a.js")"></script>
+
+    <!--for app-->
+    <script src="@Url.Content("~/Scripts/app/constants.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/app.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/directives.js")"></script>
+
+    <script src="@Url.Content("~/Scripts/app/clientController/clientContentByCategoryContentHomePage.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/clientServices/clientHomePageService.js")"></script>
+    <script src="@Url.Content("~/Scripts/app/clientController/findNameProductController.js")"></script>
+
+    @RenderSection("head", false)
+</head>
+<body ng-controller="clientContentByCategoryContentHomePage">
+    <div class="header">
+        <div class="wrap">
+            <div class="header_top">
+                <div class="logo">
+                </div>
+                <div class="header_top_right">
+                    @Html.Partial("_FindProductName")
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="navigation">
+                <a class="toggleMenu" href="#">Menu</a>
+                <ul class="nav">
+                    <li>
+                        <a href="@Url.Action("Index", "HomeClient")">Trang Chủ</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("About", "HomeClient")">Giới Thiệu</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Contact", "HomeClient")">Liên Hệ</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Content", "HomeClient")">Tin Tức</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Login", "HomeClient")">Đăng Nhập</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register", "HomeClient")">Đăng Ký</a>
+                    </li>
+                </ul>
+                <span class="left-ribbon"> </span>
+                <span class="right-ribbon"> </span>
+            </div>
+        </div>
+    </div>
+    <!------------End Header ------------>
+    <div class="main">
+        <div class="content">
+            <div class="content_bottom">
+                <div class="wrap">
+                    <div class="content-bottom-left">
+                        <div class="categories">
+                            <h3>Danh Mục Tin Tức</h3>
+                            <ul>
+                                <li ng-repeat="categorycontent in BindCategoryContentForClientContentPage" ng-class="categorycontent.isActive ? 'active': ''"><a href="/Client/HomeClient/ContentByCategoryContent?id={{categorycontent.CategoryContentID}}">{{categorycontent.Name}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="buters-guide">
+                            <h3 style="margin-bottom: 15px;">Tin Tức Mới Nhất</h3>
+                            <div ng-repeat="newcontent in BindNewNewsForClientHomePage" style="margin-bottom: 15px; border-bottom: 1px solid #eee;">
+                                <div style="float:left;">
+                                    <img ng-src="{{newcontent.Image}}" style="width:70px; height:70px;" alt="">
+                                </div>
+                                <p><a href="/Client/HomeClient/ContentDetail?id={{newcontent.ContentID}}" style="color:#e44f2b; font-size: 13px; letter-spacing: -0.02em; text-align: justify;">{{newcontent.Title}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    @RenderBody()
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        @Html.Partial("_Footer")
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <a href="#" id="toTop"> </a>
+    <script src="@Url.Content("~/Content/js/navigation.js")"></script>
+</body>
+</html>
